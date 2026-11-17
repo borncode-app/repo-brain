@@ -33,6 +33,12 @@ Renamed from `install-obsidian` to `repo-brain`. Repos installed with 1.x: follo
 - PHASES/01-analyze.md: step 1.7 was swallowed by an unclosed code fence
 - TEMPLATES hub template: nested code fences closed its Structure block early
 
+### Repository maintenance
+- History rewritten with `git filter-repo`: every commit's author and committer is now BornCode `<born113za@gmail.com>`, which GitHub resolves to the `borncode-app` account, so the Contributors graph lists a single contributor
+- All `Co-authored-by` trailers removed from commit messages
+- The 21 merged `copilot/*` branches were deleted; `main` and the annotated tag `v2.0.0` were force-pushed to the rewritten history
+- File contents are byte-identical to the pre-rewrite tree
+
 ## [1.1.0] - 2026-06-05
 
 _Versioned retroactively: these changes shipped on `main` after 1.0.0 without a release number._

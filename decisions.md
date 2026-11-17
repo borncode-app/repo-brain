@@ -2,6 +2,12 @@
 
 > Persistent design decisions for this repository.
 
+## 2026-11-17 — Rewrite history so the Contributors graph shows one account
+
+- **Decision**: rewrite every commit with `git filter-repo` so that author and committer are BornCode `<born113za@gmail.com>` — the address GitHub already resolves to the `borncode-app` account — and so that no commit message carries a `Co-authored-by` trailer. The 21 merged `copilot/*` branches were deleted, and `main` plus the annotated tag `v2.0.0` were force-pushed to the rewritten history.
+- **Why**: the Contributors graph counted Copilot 24 and `borncode-app` 3. Copilot's 24 came from the *author* field of its commits, not from a trailer, so deleting trailers alone could not remove it. The remaining commits used two personal Gmail addresses that GitHub could not link to any account, so they were invisible in the graph. Rewriting the author field to the one address GitHub links makes every commit resolve to a single account.
+- **Impact**: all 51 commit SHAs changed, so every clone must be reset rather than merged. File contents are byte-identical to the previous tree, which was verified before the push. The pre-rewrite history is kept as a local mirror at `C:\dev\repo-brain-backup.git` for the duration of the transition. The `/contributors` REST endpoint can still return the pre-rewrite numbers for a while; the `stats/contributors` endpoint that backs the `graphs/contributors` page already reports `borncode-app` alone.
+
 ## 2026-11-17 — Rename to repo-brain; `AGENTS.md` is the single source of truth
 
 - **Decision**: rename the project from `install-obsidian` to `repo-brain`. The hub is `AGENTS.md`, in this repo and in every target repo. `CLAUDE.md` holds one line, the import `@AGENTS.md`. The `updating-docs` skill stays under `.claude/skills/`.
