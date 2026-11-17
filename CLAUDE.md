@@ -8,10 +8,10 @@
 
 ## Read First
 
-- [[README]] — project overview
-- [[INSTALL]] — execution flow for AI agents
-- [[PRINCIPLES]] — design rules
-- [[.claude/skills/updating-docs]] — generic doc-update skill shipped to target repos (read this when working on the skill itself or Phase 3 step 3.6)
+- [README.md](README.md) — project overview
+- [INSTALL.md](INSTALL.md) — execution flow for AI agents
+- [PRINCIPLES.md](PRINCIPLES.md) — design rules
+- [.claude/skills/updating-docs/SKILL.md](.claude/skills/updating-docs/SKILL.md) — generic doc-update skill shipped to target repos (read this when working on the skill itself or Phase 3 step 3.6)
 
 ---
 
@@ -43,13 +43,13 @@ install-obsidian/
 ## Rule Layers
 
 1. **Stable rules (immutable)**: read all files in `./.claude/rules/` first.
-   - [[.claude/rules/stable-rules]] — project-wide stable rules
-   - [[.claude/rules/security-rules]] — security constraints
-   - [[.claude/rules/coding-behavior-rules]] — Karpathy-inspired coding behavior (think before coding, simplicity, surgical changes, goal-driven execution)
+   - [.claude/rules/stable-rules.md](.claude/rules/stable-rules.md) — project-wide stable rules
+   - [.claude/rules/security-rules.md](.claude/rules/security-rules.md) — security constraints
+   - [.claude/rules/coding-behavior-rules.md](.claude/rules/coding-behavior-rules.md) — Karpathy-inspired coding behavior (think before coding, simplicity, surgical changes, goal-driven execution)
 2. **Operational rules (editable)**: use this `CLAUDE.md` for workflow/navigation.
 3. **Task-specific instructions**: follow user instructions in current session.
 4. **Hybrid strategy**: preserve installer core requirements; apply llm-wiki-inspired practices as a complementary layer.
-5. **Shipped skills**: `./.claude/skills/updating-docs/SKILL.md` is the generic doc-update skill that the installer copies to every target repo (see [[PHASES/03-implement]] step 3.6).
+5. **Shipped skills**: `./.claude/skills/updating-docs/SKILL.md` is the generic doc-update skill that the installer copies to every target repo (see [PHASES/03-implement.md](PHASES/03-implement.md) step 3.6).
 
 ---
 
@@ -78,7 +78,7 @@ At the end of every session, run a final pass:
 
 ## Related
 
-- [[INSTALL]]
-- [[PRINCIPLES]]
-- [[CHANGELOG]]
-- [[decisions]]
+- [INSTALL.md](INSTALL.md)
+- [PRINCIPLES.md](PRINCIPLES.md)
+- [CHANGELOG.md](CHANGELOG.md)
+- [decisions.md](decisions.md)

@@ -75,7 +75,7 @@ Related: [[linked-doc-1]] | [[linked-doc-2]]
 
 ## Related
 
-- [[INSTALL]] — How this template is used during implementation
-- [[TEMPLATES/testing-doc]] — Testing docs often reference build process
-- [[TEMPLATES/integration-doc]] — Build may depend on external tools
-- [[TEMPLATES/index-doc]] — Index doc links to all build docs
+- [INSTALL.md](../INSTALL.md) — How this template is used during implementation
+- [TEMPLATES/testing-doc.md](testing-doc.md) — Testing docs often reference build process
+- [TEMPLATES/integration-doc.md](integration-doc.md) — Build may depend on external tools
+- [TEMPLATES/index-doc.md](index-doc.md) — Index doc links to all build docs

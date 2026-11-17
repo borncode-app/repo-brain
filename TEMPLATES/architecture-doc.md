@@ -69,7 +69,7 @@ Related: [[linked-doc-1]] | [[linked-doc-2]]
 
 ## Related
 
-- [[INSTALL]] — How this template is used during implementation
-- [[TEMPLATES/feature-doc]] — Feature docs link to architecture docs
-- [[TEMPLATES/reference-doc]] — Reference docs complement architecture docs
-- [[TEMPLATES/index-doc]] — Index doc links to all architecture docs
+- [INSTALL.md](../INSTALL.md) — How this template is used during implementation
+- [TEMPLATES/feature-doc.md](feature-doc.md) — Feature docs link to architecture docs
+- [TEMPLATES/reference-doc.md](reference-doc.md) — Reference docs complement architecture docs
+- [TEMPLATES/index-doc.md](index-doc.md) — Index doc links to all architecture docs

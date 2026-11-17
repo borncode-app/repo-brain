@@ -67,6 +67,6 @@ Related: [[linked-doc-1]] | [[linked-doc-2]]
 
 ## Related
 
-- [[INSTALL]] — How this template is used during implementation
-- [[TEMPLATES/architecture-doc]] — Architecture defines what goes into reference
-- [[TEMPLATES/index-doc]] — Index doc links to all reference docs
+- [INSTALL.md](../INSTALL.md) — How this template is used during implementation
+- [TEMPLATES/architecture-doc.md](architecture-doc.md) — Architecture defines what goes into reference
+- [TEMPLATES/index-doc.md](index-doc.md) — Index doc links to all reference docs

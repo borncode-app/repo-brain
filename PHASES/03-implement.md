@@ -22,7 +22,7 @@ mkdir -p docs/project docs/architecture docs/features docs/reference
 
 ### 3.2 Create docs/_index.md
 
-Use the [[TEMPLATES/index-doc]] pattern:
+Use the [TEMPLATES/index-doc.md](../TEMPLATES/index-doc.md) pattern:
 - Navigation hub with links to all docs
 - Organized by category
 - Include existing related files (README, etc.)
@@ -31,7 +31,7 @@ Use the [[TEMPLATES/index-doc]] pattern:
 
 For each approved doc:
 
-1. **Choose the right template** from [[TEMPLATES/]]
+1. **Choose the right template** from [TEMPLATES/](../TEMPLATES/)
 2. **Fill with real information** from your Phase 1 analysis
 3. **Add wiki links** to related docs
 4. **Add Design Origin** if the feature has a spec/plan
@@ -47,7 +47,7 @@ Rules while writing:
 
 ### 3.4 Create CLAUDE.md
 
-Use [[TEMPLATES/hub-claude-md]] as the structure guide:
+Use [TEMPLATES/hub-agents-md.md](../TEMPLATES/hub-agents-md.md) as the structure guide:
 - Keep it compact (<100 lines if possible)
 - All links must point to real docs that exist
 - Working Rules must be specific to THIS repo
@@ -112,7 +112,7 @@ Per the approved migration plan:
 
 If `AGENTS.md` exists:
 
-1. Use the Phase 2 mapping table (or [[TEMPLATES/migration-map]]) as the source of truth
+1. Use the Phase 2 mapping table (or [TEMPLATES/migration-map.md](../TEMPLATES/migration-map.md)) as the source of truth
 2. Verify each mapped section exists in its destination file/section
 3. Produce a coverage summary:
    - `mapped sections: X/Y`
@@ -185,15 +185,15 @@ Wait for the human's final review.
 
 ## Related
 
-- [[INSTALL]] — Main instruction flow
-- [[PRINCIPLES]] — Design philosophy governing implementation
-- [[PHASES/02-design]] — Previous phase: approved design
-- [[PHASES/04-optimize-links]] — Next phase: optimize links
-- [[TEMPLATES/architecture-doc]] — Architecture doc template
-- [[TEMPLATES/feature-doc]] — Feature doc template
-- [[TEMPLATES/project-doc]] — Project doc template
-- [[TEMPLATES/reference-doc]] — Reference doc template
-- [[TEMPLATES/hub-claude-md]] — CLAUDE.md hub template
-- [[TEMPLATES/index-doc]] — Index doc template
-- [[TEMPLATES/migration-map]] — Migration mapping template
-- [[.claude/skills/updating-docs]] — Generic doc-update skill shipped with this installer
+- [INSTALL.md](../INSTALL.md) — Main instruction flow
+- [PRINCIPLES.md](../PRINCIPLES.md) — Design philosophy governing implementation
+- [PHASES/02-design.md](02-design.md) — Previous phase: approved design
+- [PHASES/04-optimize-links.md](04-optimize-links.md) — Next phase: optimize links
+- [TEMPLATES/architecture-doc.md](../TEMPLATES/architecture-doc.md) — Architecture doc template
+- [TEMPLATES/feature-doc.md](../TEMPLATES/feature-doc.md) — Feature doc template
+- [TEMPLATES/project-doc.md](../TEMPLATES/project-doc.md) — Project doc template
+- [TEMPLATES/reference-doc.md](../TEMPLATES/reference-doc.md) — Reference doc template
+- [TEMPLATES/hub-agents-md.md](../TEMPLATES/hub-agents-md.md) — CLAUDE.md hub template
+- [TEMPLATES/index-doc.md](../TEMPLATES/index-doc.md) — Index doc template
+- [TEMPLATES/migration-map.md](../TEMPLATES/migration-map.md) — Migration mapping template
+- [.claude/skills/updating-docs/SKILL.md](../.claude/skills/updating-docs/SKILL.md) — Generic doc-update skill shipped with this installer

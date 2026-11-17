@@ -19,7 +19,7 @@ Clean up files that are no longer needed after the documentation system is insta
 
 ### 5.1 Identify Files Marked for Removal
 
-During [[PHASES/02-design]], the migration plan tracked which existing files had their content
+During [PHASES/02-design.md](02-design.md), the migration plan tracked which existing files had their content
 redistributed into the new doc structure. Cross-reference that plan to build a
 candidate list.
 
@@ -36,7 +36,7 @@ Also detect any additional files that may now be redundant:
 4. **Protect rationale context** — do not mark files removable if unique decision context has not been migrated
 
 If the file is `AGENTS.md`, section-level verification is mandatory and must reference
-the mapping produced in [[PHASES/02-design]] (recommended format: [[TEMPLATES/migration-map]]).
+the mapping produced in [PHASES/02-design.md](02-design.md) (recommended format: [TEMPLATES/migration-map.md](../TEMPLATES/migration-map.md)).
 
 ### 5.2 Detect Installer Directory
 
@@ -131,7 +131,7 @@ conversation was driving the installer and the human should be aware it is gone.
 
 ## Related
 
-- [[INSTALL]] — Main instruction flow
-- [[PHASES/02-design]] — Phase 2: migration plan originates here
-- [[PHASES/03-implement]] — Phase 3: must be complete before cleanup
-- [[PHASES/04-optimize-links]] — Link optimization before cleanup
+- [INSTALL.md](../INSTALL.md) — Main instruction flow
+- [PHASES/02-design.md](02-design.md) — Phase 2: migration plan originates here
+- [PHASES/03-implement.md](03-implement.md) — Phase 3: must be complete before cleanup
+- [PHASES/04-optimize-links.md](04-optimize-links.md) — Link optimization before cleanup

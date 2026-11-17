@@ -103,10 +103,10 @@ In both modes, files must contain real content. No empty placeholders.
 
 | File | Purpose |
 |------|---------|
-| [[INSTALL]] | Step-by-step instructions for AI agents |
-| [[PRINCIPLES]] | Design principles and decision framework |
-| [[CONTRIBUTING]] | Contributor guidelines |
-| [[CHANGELOG]] | Version tracking |
+| [INSTALL.md](INSTALL.md) | Step-by-step instructions for AI agents |
+| [PRINCIPLES.md](PRINCIPLES.md) | Design principles and decision framework |
+| [CONTRIBUTING.md](CONTRIBUTING.md) | Contributor guidelines |
+| [CHANGELOG.md](CHANGELOG.md) | Version tracking |
 | `CLAUDE.md` | Operational hub used by AI agents |
 | `decisions.md` | Persistent design decision log |
 | `.claude/rules/` | Stable project and security rules |

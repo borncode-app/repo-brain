@@ -40,12 +40,12 @@ Do not treat the inspired layer as a replacement for installer core requirements
 Choose one mode before Phase 2 and include it in the design proposal.
 
 ### Mode: `strict` (full-standard structure)
-- Create the standard category structure from [[README]]: `project`, `architecture`, `features`, `integrations`, `build`, `testing`, `reference`
+- Create the standard category structure from [README.md](README.md): `project`, `architecture`, `features`, `integrations`, `build`, `testing`, `reference`
 - Create at least one real-content doc in each category, or explicitly link existing docs that satisfy the category
 - Use this mode when the human expects the full standardized structure
 
 ### Mode: `adaptive`
-- Keep the current behavior from [[PRINCIPLES]]: create only categories justified by the repo analysis
+- Keep the current behavior from [PRINCIPLES.md](PRINCIPLES.md): create only categories justified by the repo analysis
 - Skip non-applicable categories
 - Use this mode when minimal, structure-following documentation is preferred
 
@@ -55,24 +55,24 @@ If the human does not specify a mode, default to `strict`.
 
 | Phase | File | Description |
 |-------|------|-------------|
-| 1: ANALYZE | [[PHASES/01-analyze]] | Explore repo structure, identify key folders, subsystems, entry points |
-| 2: DESIGN | [[PHASES/02-design]] | Propose doc tree, CLAUDE.md outline, migration plan |
-| 3: IMPLEMENT | [[PHASES/03-implement]] | Create docs, write content, add links, set up hub, stable rules, and decisions log |
-| 4: OPTIMIZE LINKS | [[PHASES/04-optimize-links]] | Final link-quality pass: remove duplicate/valueless links, keep graph clean |
-| 5: CLEANUP | [[PHASES/05-cleanup]] | Remove installer artifacts and obsolete files (after human approval) |
+| 1: ANALYZE | [PHASES/01-analyze.md](PHASES/01-analyze.md) | Explore repo structure, identify key folders, subsystems, entry points |
+| 2: DESIGN | [PHASES/02-design.md](PHASES/02-design.md) | Propose doc tree, CLAUDE.md outline, migration plan |
+| 3: IMPLEMENT | [PHASES/03-implement.md](PHASES/03-implement.md) | Create docs, write content, add links, set up hub, stable rules, and decisions log |
+| 4: OPTIMIZE LINKS | [PHASES/04-optimize-links.md](PHASES/04-optimize-links.md) | Final link-quality pass: remove duplicate/valueless links, keep graph clean |
+| 5: CLEANUP | [PHASES/05-cleanup.md](PHASES/05-cleanup.md) | Remove installer artifacts and obsolete files (after human approval) |
 
 ## How to Execute
 
-1. Read [[PRINCIPLES]] to understand the design philosophy
-2. Read [[PHASES/01-analyze]] and execute it fully
+1. Read [PRINCIPLES.md](PRINCIPLES.md) to understand the design philosophy
+2. Read [PHASES/01-analyze.md](PHASES/01-analyze.md) and execute it fully
 3. Present your analysis to the human, wait for acknowledgment
-4. Read [[PHASES/02-design]] and execute it fully
+4. Read [PHASES/02-design.md](PHASES/02-design.md) and execute it fully
 5. Present your proposed doc tree to the human, wait for approval
-6. Read [[PHASES/03-implement]] and execute it fully
+6. Read [PHASES/03-implement.md](PHASES/03-implement.md) and execute it fully
 7. Ensure `decisions.md` is updated with notable design choices from Phase 3
 8. Present the result for final review
-9. Read [[PHASES/04-optimize-links]] and run the link optimization pass
-10. Read [[PHASES/05-cleanup]] and execute it after human approves the review
+9. Read [PHASES/04-optimize-links.md](PHASES/04-optimize-links.md) and run the link optimization pass
+10. Read [PHASES/05-cleanup.md](PHASES/05-cleanup.md) and execute it after human approves the review
 
 ### Hybrid Practicality Gate (apply in every phase)
 
@@ -85,29 +85,29 @@ Before moving to the next phase, verify:
 
 ## Templates
 
-Use files in [[TEMPLATES/]] as structure guides. Each template defines:
+Use files in [TEMPLATES/](TEMPLATES/) as structure guides. Each template defines:
 - What sections a doc type should have
 - What questions it should answer
 - How it should link to other docs
 
 | Template | Purpose |
 |----------|---------|
-| [[TEMPLATES/architecture-doc]] | Structural patterns and subsystem design |
-| [[TEMPLATES/build-doc]] | Build process, packaging, release |
-| [[TEMPLATES/feature-doc]] | User-facing feature workflows |
-| [[TEMPLATES/hub-claude-md]] | CLAUDE.md hub structure |
-| [[TEMPLATES/index-doc]] | Documentation navigation hub |
-| [[TEMPLATES/integration-doc]] | External tools and libraries |
-| [[TEMPLATES/migration-map]] | Section-by-section migration mapping (AGENTS.md and other docs) |
-| [[TEMPLATES/project-doc]] | Project-level knowledge |
-| [[TEMPLATES/reference-doc]] | Config, constants, conventions |
-| [[TEMPLATES/testing-doc]] | Testing strategy and conventions |
+| [TEMPLATES/architecture-doc.md](TEMPLATES/architecture-doc.md) | Structural patterns and subsystem design |
+| [TEMPLATES/build-doc.md](TEMPLATES/build-doc.md) | Build process, packaging, release |
+| [TEMPLATES/feature-doc.md](TEMPLATES/feature-doc.md) | User-facing feature workflows |
+| [TEMPLATES/hub-agents-md.md](TEMPLATES/hub-agents-md.md) | CLAUDE.md hub structure |
+| [TEMPLATES/index-doc.md](TEMPLATES/index-doc.md) | Documentation navigation hub |
+| [TEMPLATES/integration-doc.md](TEMPLATES/integration-doc.md) | External tools and libraries |
+| [TEMPLATES/migration-map.md](TEMPLATES/migration-map.md) | Section-by-section migration mapping (AGENTS.md and other docs) |
+| [TEMPLATES/project-doc.md](TEMPLATES/project-doc.md) | Project-level knowledge |
+| [TEMPLATES/reference-doc.md](TEMPLATES/reference-doc.md) | Config, constants, conventions |
+| [TEMPLATES/testing-doc.md](TEMPLATES/testing-doc.md) | Testing strategy and conventions |
 
 Templates are NOT pre-filled content. You must fill them with real information from the repo.
 
 ## Completion Checklist
 
-High-level verification — see [[PHASES/03-implement]] for the full detailed checklist.
+High-level verification — see [PHASES/03-implement.md](PHASES/03-implement.md) for the full detailed checklist.
 
 - [ ] All approved docs created with real content
 - [ ] CLAUDE.md and docs/_index.md created as hubs
@@ -131,7 +131,7 @@ Installation is complete only when all of the following are true:
 3. Stable rules exist in `./.claude/rules/` and are referenced by `CLAUDE.md`
 4. `decisions.md` exists for persistent design rationale
 5. Core docs exist per selected mode:
-    - `strict`: all standard categories from [[README]] are represented
+    - `strict`: all standard categories from [README.md](README.md) are represented
     - `adaptive`: only analysis-justified categories are present (with rationale in Phase 2 output)
 6. If `AGENTS.md` exists, all meaningful sections are mapped and migrated with evidence
 7. Final link optimization pass completed on `CLAUDE.md` + `docs/`
@@ -188,7 +188,7 @@ If the repo is a single-file project or lacks identifiable directories:
 ### Repo uses a non-standard language/framework
 - Identify entry points based on the framework's conventions
 - Note the unfamiliar stack in your analysis
-- Use the generic [[PRINCIPLES]] guidelines — they apply to any stack
+- Use the generic [PRINCIPLES.md](PRINCIPLES.md) guidelines — they apply to any stack
 
 ### Existing docs conflict with proposed structure
 - Never delete existing docs without human approval
@@ -197,19 +197,19 @@ If the repo is a single-file project or lacks identifiable directories:
 
 ### AGENTS.md exists but migration is incomplete
 - Do NOT proceed to Phase 3 until every meaningful AGENTS.md section is mapped to a destination
-- Use [[TEMPLATES/migration-map]] to track section-level coverage
+- Use [TEMPLATES/migration-map.md](TEMPLATES/migration-map.md) to track section-level coverage
 - Mark unknown or risky mappings explicitly and escalate to the human
 
 ---
 
 ## Related
 
-- [[README]] — Project overview and usage guide
-- [[PRINCIPLES]] — Design philosophy that governs all decisions
-- [[CONTRIBUTING]] — How to contribute changes
-- [[CHANGELOG]] — Version history
-- [[.claude/skills/updating-docs]] — Generic doc-update skill shipped with this installer
+- [README.md](README.md) — Project overview and usage guide
+- [PRINCIPLES.md](PRINCIPLES.md) — Design philosophy that governs all decisions
+- [CONTRIBUTING.md](CONTRIBUTING.md) — How to contribute changes
+- [CHANGELOG.md](CHANGELOG.md) — Version history
+- [.claude/skills/updating-docs/SKILL.md](.claude/skills/updating-docs/SKILL.md) — Generic doc-update skill shipped with this installer
 
 ---
 
-Start by reading [[PRINCIPLES]], then [[PHASES/01-analyze]].
+Start by reading [PRINCIPLES.md](PRINCIPLES.md), then [PHASES/01-analyze.md](PHASES/01-analyze.md).

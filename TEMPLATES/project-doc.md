@@ -76,7 +76,7 @@ Related: [[linked-doc-1]] | [[linked-doc-2]]
 
 ## Related
 
-- [[INSTALL]] — How this template is used during implementation
-- [[TEMPLATES/feature-doc]] — Features are documented separately
-- [[TEMPLATES/index-doc]] — Index doc links to all project docs
-- [[PHASES/01-analyze]] — Analysis feeds into project docs
+- [INSTALL.md](../INSTALL.md) — How this template is used during implementation
+- [TEMPLATES/feature-doc.md](feature-doc.md) — Features are documented separately
+- [TEMPLATES/index-doc.md](index-doc.md) — Index doc links to all project docs
+- [PHASES/01-analyze.md](../PHASES/01-analyze.md) — Analysis feeds into project docs

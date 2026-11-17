@@ -169,10 +169,10 @@ At the end of each work session:
 
 ## Related Files
 
-- [[README]] — User-facing intro
+- [README.md](../README.md) — User-facing intro
 - [[AGENTS]] — (if preserved during transition)
 - `./.claude/rules/` — Stable rules
-- [[decisions]] — Design decisions log
+- [decisions.md](../decisions.md) — Design decisions log
 ```
 
 ## Guidelines

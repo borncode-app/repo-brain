@@ -73,7 +73,7 @@ Related: [[PHASES/02-design]] | [[PHASES/03-implement]] | [[PHASES/05-cleanup]]
 
 ## Related
 
-- [[INSTALL]] — Main instruction flow with strict/adaptive mode and definition of done
-- [[PHASES/02-design]] — Migration mapping is required here
-- [[PHASES/03-implement]] — Migration coverage gate uses this map
-- [[PHASES/05-cleanup]] — Cleanup verification references this map
+- [INSTALL.md](../INSTALL.md) — Main instruction flow with strict/adaptive mode and definition of done
+- [PHASES/02-design.md](../PHASES/02-design.md) — Migration mapping is required here
+- [PHASES/03-implement.md](../PHASES/03-implement.md) — Migration coverage gate uses this map
+- [PHASES/05-cleanup.md](../PHASES/05-cleanup.md) — Cleanup verification references this map

@@ -127,14 +127,14 @@ Present your findings as a structured analysis:
 [How to apply inspired-layer improvements without replacing installer core requirements]
 ```
 
-Wait for the human to acknowledge your analysis before proceeding to [[PHASES/02-design]].
+Wait for the human to acknowledge your analysis before proceeding to [PHASES/02-design.md](02-design.md).
 
 ---
 
 ## Related
 
-- [[INSTALL]] — Main instruction flow
-- [[PRINCIPLES]] — Design philosophy guiding your analysis
-- [[PHASES/02-design]] — Next phase: design the doc tree
-- [[TEMPLATES/project-doc]] — Template for project-level docs
-- [[TEMPLATES/architecture-doc]] — Template for architecture docs
+- [INSTALL.md](../INSTALL.md) — Main instruction flow
+- [PRINCIPLES.md](../PRINCIPLES.md) — Design philosophy guiding your analysis
+- [PHASES/02-design.md](02-design.md) — Next phase: design the doc tree
+- [TEMPLATES/project-doc.md](../TEMPLATES/project-doc.md) — Template for project-level docs
+- [TEMPLATES/architecture-doc.md](../TEMPLATES/architecture-doc.md) — Template for architecture docs

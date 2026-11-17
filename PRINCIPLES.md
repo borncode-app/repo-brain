@@ -127,13 +127,13 @@ If a section only repeats obvious file content, replace it with links or remove 
 
 | Category | When to create | Key questions to answer | Template |
 |----------|---------------|------------------------|----------|
-| `docs/project/` | Always | What is this? What changed? What's broken? | [[TEMPLATES/project-doc]] |
-| `docs/architecture/` | When codebase has identifiable structure | How does it fit together? What are the layers? | [[TEMPLATES/architecture-doc]] |
-| `docs/features/` | When features have non-obvious workflows | How does this feature work end-to-end? | [[TEMPLATES/feature-doc]] |
-| `docs/integrations/` | When external tools/libraries have non-trivial usage | How is [tool] used? Where are the binaries? | [[TEMPLATES/integration-doc]] |
-| `docs/build/` | When build/packaging is non-trivial | How to build? How to release? | [[TEMPLATES/build-doc]] |
-| `docs/testing/` | When testing approach matters | How to test? What's the strategy? | [[TEMPLATES/testing-doc]] |
-| `docs/reference/` | When config/paths/constants need explanation | What does this constant mean? How does path resolution work? | [[TEMPLATES/reference-doc]] |
+| `docs/project/` | Always | What is this? What changed? What's broken? | [TEMPLATES/project-doc.md](TEMPLATES/project-doc.md) |
+| `docs/architecture/` | When codebase has identifiable structure | How does it fit together? What are the layers? | [TEMPLATES/architecture-doc.md](TEMPLATES/architecture-doc.md) |
+| `docs/features/` | When features have non-obvious workflows | How does this feature work end-to-end? | [TEMPLATES/feature-doc.md](TEMPLATES/feature-doc.md) |
+| `docs/integrations/` | When external tools/libraries have non-trivial usage | How is [tool] used? Where are the binaries? | [TEMPLATES/integration-doc.md](TEMPLATES/integration-doc.md) |
+| `docs/build/` | When build/packaging is non-trivial | How to build? How to release? | [TEMPLATES/build-doc.md](TEMPLATES/build-doc.md) |
+| `docs/testing/` | When testing approach matters | How to test? What's the strategy? | [TEMPLATES/testing-doc.md](TEMPLATES/testing-doc.md) |
+| `docs/reference/` | When config/paths/constants need explanation | What does this constant mean? How does path resolution work? | [TEMPLATES/reference-doc.md](TEMPLATES/reference-doc.md) |
 
 Not every repo needs every category. Create only what the codebase justifies.
 
@@ -169,17 +169,17 @@ The documentation system is successful when:
 
 ## Related
 
-- [[INSTALL]] — How these principles are applied in practice
-- [[README]] — Project overview
-- [[PHASES/01-analyze]] — Phase 1 uses these principles to analyze repos
-- [[PHASES/02-design]] — Phase 2 designs doc trees following these rules
-- [[PHASES/03-implement]] — Phase 3 implements docs based on these principles
+- [INSTALL.md](INSTALL.md) — How these principles are applied in practice
+- [README.md](README.md) — Project overview
+- [PHASES/01-analyze.md](PHASES/01-analyze.md) — Phase 1 uses these principles to analyze repos
+- [PHASES/02-design.md](PHASES/02-design.md) — Phase 2 designs doc trees following these rules
+- [PHASES/03-implement.md](PHASES/03-implement.md) — Phase 3 implements docs based on these principles
 
 ### Template References
 
 | Principle | Relevant Template |
 |-----------|------------------|
-| Hub-and-spoke architecture | [[TEMPLATES/hub-claude-md]], [[TEMPLATES/index-doc]] |
-| Every doc earns its existence | [[TEMPLATES/project-doc]], [[TEMPLATES/feature-doc]] |
-| Link generously, duplicate never | [[TEMPLATES/architecture-doc]], [[TEMPLATES/reference-doc]] |
-| Optimize for the graph | [[TEMPLATES/integration-doc]], [[TEMPLATES/testing-doc]] |
+| Hub-and-spoke architecture | [TEMPLATES/hub-agents-md.md](TEMPLATES/hub-agents-md.md), [TEMPLATES/index-doc.md](TEMPLATES/index-doc.md) |
+| Every doc earns its existence | [TEMPLATES/project-doc.md](TEMPLATES/project-doc.md), [TEMPLATES/feature-doc.md](TEMPLATES/feature-doc.md) |
+| Link generously, duplicate never | [TEMPLATES/architecture-doc.md](TEMPLATES/architecture-doc.md), [TEMPLATES/reference-doc.md](TEMPLATES/reference-doc.md) |
+| Optimize for the graph | [TEMPLATES/integration-doc.md](TEMPLATES/integration-doc.md), [TEMPLATES/testing-doc.md](TEMPLATES/testing-doc.md) |

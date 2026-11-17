@@ -71,7 +71,7 @@ Related: [[linked-doc-1]] | [[linked-doc-2]]
 
 ## Related
 
-- [[INSTALL]] — How this template is used during implementation
-- [[TEMPLATES/architecture-doc]] — Feature docs link to architecture docs
-- [[TEMPLATES/project-doc]] — Project overview connects to feature docs
-- [[PHASES/03-implement]] — Phase that creates feature docs
+- [INSTALL.md](../INSTALL.md) — How this template is used during implementation
+- [TEMPLATES/architecture-doc.md](architecture-doc.md) — Feature docs link to architecture docs
+- [TEMPLATES/project-doc.md](project-doc.md) — Project overview connects to feature docs
+- [PHASES/03-implement.md](../PHASES/03-implement.md) — Phase that creates feature docs

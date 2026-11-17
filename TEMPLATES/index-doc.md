@@ -86,6 +86,6 @@
 
 ## Related
 
-- [[INSTALL]] — How this template is used during implementation
-- [[TEMPLATES/hub-claude-md]] — CLAUDE.md is the first hub, _index.md is the second
-- [[PHASES/03-implement]] — Phase that creates docs/_index.md
+- [INSTALL.md](../INSTALL.md) — How this template is used during implementation
+- [TEMPLATES/hub-agents-md.md](hub-agents-md.md) — CLAUDE.md is the first hub, _index.md is the second
+- [PHASES/03-implement.md](../PHASES/03-implement.md) — Phase that creates docs/_index.md

@@ -208,8 +208,8 @@ Read docs/features/closest-sibling.md
 
 ## Related
 
-- [[CLAUDE]] — Project hub, has the directory tree and Documentation Map
-- [[.claude/rules/stable-rules]] — Non-negotiable rules every doc must respect
+- [CLAUDE.md](../../../CLAUDE.md) — Project hub, has the directory tree and Documentation Map
+- [.claude/rules/stable-rules.md](../../rules/stable-rules.md) — Non-negotiable rules every doc must respect
 - [[docs/_index]] — Documentation index you must update when adding a doc
 - `TEMPLATES/*` in this repo (if present) — doc structure templates; match your new doc to the closest existing sibling
 - `docs/features/<closest-sibling>` — the most similar existing doc in the same category; match its style

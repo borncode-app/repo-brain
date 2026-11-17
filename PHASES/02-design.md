@@ -16,7 +16,7 @@ Design the documentation architecture based on Phase 1 analysis.
 Based on the analysis, determine:
 
 - Which category folders are justified (not every repo needs all categories)
-- Which specific docs should exist (each must earn its existence per [[PRINCIPLES]])
+- Which specific docs should exist (each must earn its existence per [PRINCIPLES.md](../PRINCIPLES.md))
 - What CLAUDE.md should contain
 
 Present the proposed tree:
@@ -60,7 +60,7 @@ If existing docs (AGENTS.md, README, etc.) have valuable information:
 - Propose whether to keep, redirect, or remove existing docs
 
 If `AGENTS.md` exists, this mapping is mandatory and must be section-by-section.
-Use [[TEMPLATES/migration-map]] and include every meaningful section.
+Use [TEMPLATES/migration-map.md](../TEMPLATES/migration-map.md) and include every meaningful section.
 
 Required AGENTS mapping table:
 
@@ -75,7 +75,7 @@ Rules:
 - Every meaningful AGENTS.md section must appear in this table
 - `Status` must be `mapped` for all rows before Phase 3
 - If a section cannot be mapped, stop and request human guidance
-- Do NOT proceed to [[PHASES/03-implement]] with partial mapping
+- Do NOT proceed to [PHASES/03-implement.md](03-implement.md) with partial mapping
 
 Include a **Files Marked for Removal** section:
 
@@ -138,16 +138,16 @@ Present your design as:
 [pass/fail + short rationale]
 ```
 
-Wait for the human to approve or request changes before proceeding to [[PHASES/03-implement]].
+Wait for the human to approve or request changes before proceeding to [PHASES/03-implement.md](03-implement.md).
 
 ---
 
 ## Related
 
-- [[INSTALL]] — Main instruction flow
-- [[PRINCIPLES]] — Design philosophy for doc tree decisions
-- [[PHASES/01-analyze]] — Previous phase: repo analysis
-- [[PHASES/03-implement]] — Next phase: create the docs
-- [[TEMPLATES/hub-claude-md]] — Template for CLAUDE.md hub
-- [[TEMPLATES/index-doc]] — Template for docs/_index.md navigation
-- [[TEMPLATES/migration-map]] — Template for section-by-section migration planning
+- [INSTALL.md](../INSTALL.md) — Main instruction flow
+- [PRINCIPLES.md](../PRINCIPLES.md) — Design philosophy for doc tree decisions
+- [PHASES/01-analyze.md](01-analyze.md) — Previous phase: repo analysis
+- [PHASES/03-implement.md](03-implement.md) — Next phase: create the docs
+- [TEMPLATES/hub-agents-md.md](../TEMPLATES/hub-agents-md.md) — Template for CLAUDE.md hub
+- [TEMPLATES/index-doc.md](../TEMPLATES/index-doc.md) — Template for docs/_index.md navigation
+- [TEMPLATES/migration-map.md](../TEMPLATES/migration-map.md) — Template for section-by-section migration planning

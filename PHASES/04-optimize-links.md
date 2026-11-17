@@ -95,7 +95,7 @@ Present:
 
 ## Related
 
-- [[INSTALL]] — main flow
-- [[PHASES/03-implement]] — docs creation phase
-- [[PHASES/05-cleanup]] — cleanup phase after link optimization
-- [[PRINCIPLES]] — usefulness-first linking principles
+- [INSTALL.md](../INSTALL.md) — main flow
+- [PHASES/03-implement.md](03-implement.md) — docs creation phase
+- [PHASES/05-cleanup.md](05-cleanup.md) — cleanup phase after link optimization
+- [PRINCIPLES.md](../PRINCIPLES.md) — usefulness-first linking principles
