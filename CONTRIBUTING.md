@@ -18,8 +18,9 @@ Contributions are welcome! This project is licensed under the MIT License, so fe
 - Keep files in Markdown — this is an instruction set, not code
 - Follow the existing phase structure (Analyze → Design → Implement)
 - Templates should remain generic — no repo-specific paths or assumptions
+- Link files with standard relative Markdown links (see [PRINCIPLES.md](PRINCIPLES.md), principle 5)
 - When adding new templates, include both Structure and Guidelines sections
-- Update [[CHANGELOG]] with your changes
+- Update [CHANGELOG.md](CHANGELOG.md) with your changes
 
 ## Reporting Issues
 
@@ -32,7 +33,7 @@ Open an issue with:
 
 ## Related
 
-- [[README]] — Project overview and usage guide
-- [[PRINCIPLES]] — Design philosophy to follow when making changes
-- [[CHANGELOG]] — Track your changes here
-- [[INSTALL]] — How the installer works
+- [README.md](README.md) — Project overview and usage guide
+- [PRINCIPLES.md](PRINCIPLES.md) — Design philosophy to follow when making changes
+- [CHANGELOG.md](CHANGELOG.md) — Track your changes here
+- [INSTALL.md](INSTALL.md) — How the installer works

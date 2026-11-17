@@ -17,8 +17,8 @@
 
 ## Quick Links
 
-- [[CLAUDE]] — Project hub (AI reads this first)
-- [[README]] — User-facing introduction
+- [AGENTS.md](../AGENTS.md) — Project hub (every agent reads this first)
+- [README.md](../README.md) — User-facing introduction
 
 ---
 
@@ -26,38 +26,38 @@
 
 | Doc | Description |
 |-----|-------------|
-| [[docs/project/<name>]] | [one-line description] |
+| [docs/project/<name>.md](project/<name>.md) | [one-line description] |
 
 ## Architecture
 
 | Doc | Description |
 |-----|-------------|
-| [[docs/architecture/<name>]] | [one-line description] |
+| [docs/architecture/<name>.md](architecture/<name>.md) | [one-line description] |
 
 ## Features
 
 | Doc | Description |
 |-----|-------------|
-| [[docs/features/<name>]] | [one-line description] |
+| [docs/features/<name>.md](features/<name>.md) | [one-line description] |
 
 ## Integrations
 
 | Doc | Description |
 |-----|-------------|
-| [[docs/integrations/<name>]] | [one-line description] |
+| [docs/integrations/<name>.md](integrations/<name>.md) | [one-line description] |
 
 ## Build & Testing
 
 | Doc | Description |
 |-----|-------------|
-| [[docs/build/<name>]] | [one-line description] |
-| [[docs/testing/<name>]] | [one-line description] |
+| [docs/build/<name>.md](build/<name>.md) | [one-line description] |
+| [docs/testing/<name>.md](testing/<name>.md) | [one-line description] |
 
 ## Reference
 
 | Doc | Description |
 |-----|-------------|
-| [[docs/reference/<name>]] | [one-line description] |
+| [docs/reference/<name>.md](reference/<name>.md) | [one-line description] |
 
 ---
 
@@ -77,6 +77,7 @@
 
 - **Include only categories that have docs** — remove empty sections entirely
 - **Every entry must link to a real file** — no placeholders
+- **Links are relative to `docs/`** — link text is the path from the repo root, href is the path from this file (`[docs/project/overview.md](project/overview.md)`)
 - **Organize by category** matching the folder structure under `docs/`
 - **Description should answer** "what will I learn by reading this?"
 - Keep this file compact — it's a map, not an encyclopedia
@@ -86,6 +87,6 @@
 
 ## Related
 
-- [[INSTALL]] — How this template is used during implementation
-- [[TEMPLATES/hub-claude-md]] — CLAUDE.md is the first hub, _index.md is the second
-- [[PHASES/03-implement]] — Phase that creates docs/_index.md
+- [INSTALL.md](../INSTALL.md) — How this template is used during implementation
+- [TEMPLATES/hub-agents-md.md](hub-agents-md.md) — AGENTS.md is the first hub, _index.md is the second
+- [PHASES/03-implement.md](../PHASES/03-implement.md) — Phase that creates docs/_index.md

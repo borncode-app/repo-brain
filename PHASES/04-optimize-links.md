@@ -1,13 +1,13 @@
 # Phase 4: OPTIMIZE LINKS
 
 > Final link pass after implementation, before cleanup.
-> Remove duplicate/valueless links and improve Obsidian graph clarity.
+> Remove duplicate/valueless links and improve link-graph clarity.
 
 ---
 
 ## Objective
 
-Optimize wiki-link structure in `CLAUDE.md` and all files under `docs/` so links stay useful, non-redundant, and token-efficient.
+Optimize link structure in `AGENTS.md` and all files under `docs/` so links stay useful, non-redundant, and token-efficient.
 
 ## Precondition
 
@@ -31,7 +31,7 @@ Do NOT remove links that are needed for navigation, provenance, or safety contex
 
 Scan:
 
-- `CLAUDE.md`
+- `AGENTS.md`
 - `docs/**/*.md`
 
 Collect:
@@ -62,8 +62,8 @@ Edit only what improves signal:
 
 Verify:
 
-- No broken wiki links
-- Hubs remain connected (`CLAUDE.md`, `docs/_index.md`)
+- Every link is a standard relative Markdown link that resolves to an existing file (rewrite any `[[wiki-link]]` or bare path)
+- Hubs remain connected (`AGENTS.md`, `docs/_index.md`)
 - Spoke docs are not isolated unless intentionally standalone
 - Link density is readable (avoid overloaded sections)
 
@@ -85,7 +85,7 @@ Present:
 - [critical links retained and why]
 
 ### Verification
-- [ ] no broken wiki links
+- [ ] no broken links
 - [ ] hub docs still connected
 - [ ] graph readability improved
 - [ ] high-value context/rationale links preserved
@@ -95,7 +95,7 @@ Present:
 
 ## Related
 
-- [[INSTALL]] — main flow
-- [[PHASES/03-implement]] — docs creation phase
-- [[PHASES/05-cleanup]] — cleanup phase after link optimization
-- [[PRINCIPLES]] — usefulness-first linking principles
+- [INSTALL.md](../INSTALL.md) — main flow
+- [PHASES/03-implement.md](03-implement.md) — docs creation phase
+- [PHASES/05-cleanup.md](05-cleanup.md) — cleanup phase after link optimization
+- [PRINCIPLES.md](../PRINCIPLES.md) — usefulness-first linking principles

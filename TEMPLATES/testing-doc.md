@@ -28,7 +28,7 @@
 
 ### Read With
 
-- `path/to/file.md` [[wiki-link]] — reason
+- [docs/path/file.md](../path/file.md) — reason
 
 ## Test Structure
 [How tests are organized — directories, naming conventions, file patterns.
@@ -57,7 +57,7 @@ Include any special flags or environment setup needed.]
 
 ---
 
-Related: [[linked-doc-1]] | [[linked-doc-2]]
+Related: [docs/path/doc-1.md](../path/doc-1.md) | [docs/path/doc-2.md](../path/doc-2.md)
 ```
 
 ## Guidelines
@@ -71,7 +71,7 @@ Related: [[linked-doc-1]] | [[linked-doc-2]]
 
 ## Related
 
-- [[INSTALL]] — How this template is used during implementation
-- [[TEMPLATES/build-doc]] — Build and testing docs are often paired
-- [[TEMPLATES/integration-doc]] — Integration testing may reference this
-- [[TEMPLATES/index-doc]] — Index doc links to all testing docs
+- [INSTALL.md](../INSTALL.md) — How this template is used during implementation
+- [TEMPLATES/build-doc.md](build-doc.md) — Build and testing docs are often paired
+- [TEMPLATES/integration-doc.md](integration-doc.md) — Integration testing may reference this
+- [TEMPLATES/index-doc.md](index-doc.md) — Index doc links to all testing docs

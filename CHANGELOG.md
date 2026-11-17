@@ -7,6 +7,36 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.0.0] - 2026-11-17
+
+Renamed from `install-obsidian` to `repo-brain`. Repos installed with 1.x: follow UPGRADE.md.
+
+### Changed
+- **BREAKING:** `AGENTS.md` is the hub and single source of truth, in this repo and in every target repo; `CLAUDE.md` holds one line, the import `@AGENTS.md`
+- **BREAKING:** stable and security rules are written inline in `AGENTS.md` (`## Stable Rules`) instead of `.claude/rules/stable-rules.md` and `.claude/rules/security-rules.md`
+- **BREAKING:** docs link with standard relative Markdown links instead of wiki-links; the dual format in Read With becomes one link whose text is the path from the repo root
+- The installer's migration direction is reversed: an existing `AGENTS.md` is kept as the hub, and legacy instruction files (`CLAUDE.md` content, `.claude/rules/*`, other agent-specific files) are consolidated into it under the same section-level coverage gate. Before, `AGENTS.md` content was moved out and the file was offered for deletion
+- PHASES/03-implement.md: step 3.4 creates `AGENTS.md`, step 3.5 ships `.claude/rules/coding-behavior-rules.md`, new step 3.9 points `CLAUDE.md` at `AGENTS.md`, and Final Verification moves to step 3.10
+- TEMPLATES/hub-claude-md.md is renamed to TEMPLATES/hub-agents-md.md; the hub size guideline is now under 200 lines
+- `updating-docs` skill reads `AGENTS.md` and teaches the relative-link convention
+- README.md, INSTALL.md and PRINCIPLES.md treat Obsidian as an optional viewer instead of the target
+
+### Added
+- AGENTS.md — this repository's hub
+- UPGRADE.md — upgrade flow for repos that have the 1.x layout
+- INSTALL.md "Before You Start" and "One Hub for Every Agent" sections
+
+### Removed
+- .claude/rules/stable-rules.md and .claude/rules/security-rules.md — their rules moved into AGENTS.md
+
+### Fixed
+- PHASES/01-analyze.md: step 1.7 was swallowed by an unclosed code fence
+- TEMPLATES hub template: nested code fences closed its Structure block early
+
+## [1.1.0] - 2026-06-05
+
+_Versioned retroactively: these changes shipped on `main` after 1.0.0 without a release number._
+
 ### Added
 - .claude/skills/updating-docs/SKILL.md — generic doc-update skill shipped to every target repo (read-first, write-second discipline, 6-item completion checklist, red flags)
 - PHASES/03-implement.md step 3.6 — installer now copies the `updating-docs` skill to target's `.claude/skills/updating-docs/`

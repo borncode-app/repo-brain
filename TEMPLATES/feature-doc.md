@@ -28,7 +28,7 @@
 
 ### Read With
 
-- `path/to/file.md` [[wiki-link]] — reason
+- [docs/path/file.md](../path/file.md) — reason
 
 ## Flow / User Journey
 [Step-by-step walkthrough of how a user interacts with this feature.
@@ -50,13 +50,13 @@ Table format: config key, default, purpose.]
 - Impact: [what implementers/operators must know]
 
 ## Design Origin
-- Spec: [[path-to-spec]]
-- Plan: [[path-to-plan]]
+- Spec: [path/to/spec.md](../../path/to/spec.md)
+- Plan: [path/to/plan.md](../../path/to/plan.md)
 (Include only if a spec/plan exists. Omit entire section if not.)
 
 ---
 
-Related: [[linked-doc-1]] | [[linked-doc-2]]
+Related: [docs/path/doc-1.md](../path/doc-1.md) | [docs/path/doc-2.md](../path/doc-2.md)
 ```
 
 ## Guidelines
@@ -71,7 +71,7 @@ Related: [[linked-doc-1]] | [[linked-doc-2]]
 
 ## Related
 
-- [[INSTALL]] — How this template is used during implementation
-- [[TEMPLATES/architecture-doc]] — Feature docs link to architecture docs
-- [[TEMPLATES/project-doc]] — Project overview connects to feature docs
-- [[PHASES/03-implement]] — Phase that creates feature docs
+- [INSTALL.md](../INSTALL.md) — How this template is used during implementation
+- [TEMPLATES/architecture-doc.md](architecture-doc.md) — Feature docs link to architecture docs
+- [TEMPLATES/project-doc.md](project-doc.md) — Project overview connects to feature docs
+- [PHASES/03-implement.md](../PHASES/03-implement.md) — Phase that creates feature docs

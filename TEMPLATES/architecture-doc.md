@@ -28,7 +28,7 @@
 
 ### Read With
 
-- `path/to/file.md` [[wiki-link]] — reason
+- [docs/path/file.md](../path/file.md) — reason
 
 ## Structure
 [Visual representation — tree diagram, layer diagram, or composition table.
@@ -54,7 +54,7 @@ Step-by-step guide for common extension patterns.]
 
 ---
 
-Related: [[linked-doc-1]] | [[linked-doc-2]]
+Related: [docs/path/doc-1.md](../path/doc-1.md) | [docs/path/doc-2.md](../path/doc-2.md)
 ```
 
 ## Guidelines
@@ -69,7 +69,7 @@ Related: [[linked-doc-1]] | [[linked-doc-2]]
 
 ## Related
 
-- [[INSTALL]] — How this template is used during implementation
-- [[TEMPLATES/feature-doc]] — Feature docs link to architecture docs
-- [[TEMPLATES/reference-doc]] — Reference docs complement architecture docs
-- [[TEMPLATES/index-doc]] — Index doc links to all architecture docs
+- [INSTALL.md](../INSTALL.md) — How this template is used during implementation
+- [TEMPLATES/feature-doc.md](feature-doc.md) — Feature docs link to architecture docs
+- [TEMPLATES/reference-doc.md](reference-doc.md) — Reference docs complement architecture docs
+- [TEMPLATES/index-doc.md](index-doc.md) — Index doc links to all architecture docs

@@ -28,7 +28,7 @@
 
 ### Read With
 
-- `path/to/file.md` [[wiki-link]] — reason
+- [docs/path/file.md](../path/file.md) — reason
 
 ## Reference Table
 [Primary content — table of entries with their values, locations, and purposes.
@@ -52,7 +52,7 @@ This is the main value of a reference doc.]
 
 ---
 
-Related: [[linked-doc-1]] | [[linked-doc-2]]
+Related: [docs/path/doc-1.md](../path/doc-1.md) | [docs/path/doc-2.md](../path/doc-2.md)
 ```
 
 ## Guidelines
@@ -67,6 +67,6 @@ Related: [[linked-doc-1]] | [[linked-doc-2]]
 
 ## Related
 
-- [[INSTALL]] — How this template is used during implementation
-- [[TEMPLATES/architecture-doc]] — Architecture defines what goes into reference
-- [[TEMPLATES/index-doc]] — Index doc links to all reference docs
+- [INSTALL.md](../INSTALL.md) — How this template is used during implementation
+- [TEMPLATES/architecture-doc.md](architecture-doc.md) — Architecture defines what goes into reference
+- [TEMPLATES/index-doc.md](index-doc.md) — Index doc links to all reference docs

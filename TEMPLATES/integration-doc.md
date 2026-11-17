@@ -28,7 +28,7 @@
 
 ### Read With
 
-- `path/to/file.md` [[wiki-link]] — reason
+- [docs/path/file.md](../path/file.md) — reason
 
 ## Setup
 [How to install, configure, or authenticate this tool.
@@ -55,7 +55,7 @@ Things that surprised the team.]
 
 ---
 
-Related: [[linked-doc-1]] | [[linked-doc-2]]
+Related: [docs/path/doc-1.md](../path/doc-1.md) | [docs/path/doc-2.md](../path/doc-2.md)
 ```
 
 ## Guidelines
@@ -70,7 +70,7 @@ Related: [[linked-doc-1]] | [[linked-doc-2]]
 
 ## Related
 
-- [[INSTALL]] — How this template is used during implementation
-- [[TEMPLATES/architecture-doc]] — Architecture may reference integrations
-- [[TEMPLATES/build-doc]] — Build process may depend on integrated tools
-- [[TEMPLATES/index-doc]] — Index doc links to all integration docs
+- [INSTALL.md](../INSTALL.md) — How this template is used during implementation
+- [TEMPLATES/architecture-doc.md](architecture-doc.md) — Architecture may reference integrations
+- [TEMPLATES/build-doc.md](build-doc.md) — Build process may depend on integrated tools
+- [TEMPLATES/index-doc.md](index-doc.md) — Index doc links to all integration docs

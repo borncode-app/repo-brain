@@ -75,7 +75,11 @@ Build a complete mental model of the repository by analyzing its actual structur
 - What docs already exist?
 - What docs have valuable information that should be preserved?
 - What docs are outdated or empty?
-- Is there an existing CLAUDE.md or AGENTS.md?
+- Which agent instruction files exist?
+  - AGENTS.md (it becomes the hub)
+  - Legacy instruction files: CLAUDE.md, .claude/rules/*, and other agent-specific
+    files (.github/copilot-instructions.md, .cursorrules, .cursor/rules/, GEMINI.md)
+```
 
 ### 1.7 Hybrid Fit Notes
 
@@ -84,7 +88,6 @@ Build a complete mental model of the repository by analyzing its actual structur
 - Identify where rationale/decision context is missing from existing docs
 - Identify likely cross-link hubs needed for graph usefulness
 - Flag areas where doc duplication risk is high
-```
 ```
 
 ---
@@ -117,6 +120,9 @@ Present your findings as a structured analysis:
 ### Existing Docs
 [What documentation exists and its quality]
 
+### Existing Instruction Files
+[AGENTS.md and legacy instruction files found, and what each one contains]
+
 ### Documentation Gaps
 [What's missing? What would help onboarding?]
 
@@ -127,14 +133,14 @@ Present your findings as a structured analysis:
 [How to apply inspired-layer improvements without replacing installer core requirements]
 ```
 
-Wait for the human to acknowledge your analysis before proceeding to [[PHASES/02-design]].
+Wait for the human to acknowledge your analysis before proceeding to [PHASES/02-design.md](02-design.md).
 
 ---
 
 ## Related
 
-- [[INSTALL]] — Main instruction flow
-- [[PRINCIPLES]] — Design philosophy guiding your analysis
-- [[PHASES/02-design]] — Next phase: design the doc tree
-- [[TEMPLATES/project-doc]] — Template for project-level docs
-- [[TEMPLATES/architecture-doc]] — Template for architecture docs
+- [INSTALL.md](../INSTALL.md) — Main instruction flow
+- [PRINCIPLES.md](../PRINCIPLES.md) — Design philosophy guiding your analysis
+- [PHASES/02-design.md](02-design.md) — Next phase: design the doc tree
+- [TEMPLATES/project-doc.md](../TEMPLATES/project-doc.md) — Template for project-level docs
+- [TEMPLATES/architecture-doc.md](../TEMPLATES/architecture-doc.md) — Template for architecture docs
