@@ -2,6 +2,30 @@
 
 > Persistent design decisions for this repository.
 
+## 2026-11-17 — Rename to repo-brain; `AGENTS.md` is the single source of truth
+
+- **Decision**: rename the project from `install-obsidian` to `repo-brain`. The hub is `AGENTS.md`, in this repo and in every target repo. `CLAUDE.md` holds one line, the import `@AGENTS.md`. The `updating-docs` skill stays under `.claude/skills/`.
+- **Why**: the knowledge base serves any agent, not one app. `AGENTS.md` is the instruction file agents share, while Claude Code reads `CLAUDE.md` and skips `AGENTS.md` whenever a `CLAUDE.md` exists — so a `CLAUDE.md` with content of its own would shadow the hub. The import was chosen over a symlink (on Windows, Git usually runs with `core.symlinks=false`, which checks a committed symlink out as a one-line text file) and over a sentence asking the agent to read `AGENTS.md` (nothing loads unless the agent decides to open the file). Skills stay in `.claude/skills/` because that is where Claude Code discovers them; `AGENTS.md` links the skill file so other agents can follow it as a plain procedure.
+- **Impact**: the installer's migration direction is reversed. It used to move `AGENTS.md` content into `CLAUDE.md` + `docs/` and offer `AGENTS.md` for deletion; now an existing `AGENTS.md` is kept as the hub and legacy instruction files are consolidated into it. Earlier entries below that name `CLAUDE.md` as the hub now apply to `AGENTS.md`. Released as 2.0.0.
+
+## 2026-11-17 — Stable rules live inline in `AGENTS.md`
+
+- **Decision**: write stable and security rules in `AGENTS.md` under `## Stable Rules`, one line each. `coding-behavior-rules.md` stays a separate file in `.claude/rules/`, linked from that section. New rules for specific situations go under `docs/` with a Task Routing row. Supersedes "Separate stable rules from CLAUDE.md" (2026-04-21).
+- **Why**: `.claude/rules/` is loaded by Claude Code only, so rules kept there never reached Codex, Cursor, or Copilot — the security rules included. `AGENTS.md` is the one file every agent loads at session start. The coding-behavior rules are 66 lines of guidance rather than constraints, so their four principles are named inline and the full text sits one link away, still auto-loaded by Claude Code.
+- **Impact**: the overwrite risk behind the 2026-04-21 decision is now handled by a guard instead of a separate file: the section states that it changes only with human approval, and Session Closeout leaves it out of routine updates. The hub size guideline moves from 100 to 200 lines to make room.
+
+## 2026-11-17 — Standard relative Markdown links replace wiki-links
+
+- **Decision**: link docs as `[path/from/root.md](relative/href.md)`. The href is relative to the file containing the link and keeps `.md`; in navigation sections the link text is the target's path from the repo root. This replaces wiki-links and the dual format (backtick path plus wiki-link).
+- **Why**: wiki-links render as plain text on GitHub and leave an agent guessing the path and extension, which is why the dual format existed. A standard link is navigable by agents, GitHub, editors, and Obsidian (its graph view and backlinks follow Markdown links too), so one link does both jobs.
+- **Impact**: every template, phase, and the skill teach the new format, and Phase 4 rewrites any wiki-link it finds. Obsidian becomes an optional viewer.
+
+## 2026-11-17 — Separate upgrade flow for repos installed with v1
+
+- **Decision**: add `UPGRADE.md`, a focused flow that moves a v1 repo (hub in `CLAUDE.md`, rules in `.claude/rules/`, wiki-links) to the v2 layout without re-running analysis and design.
+- **Why**: a v1 repo already has its docs tree, and its content-bearing `CLAUDE.md` would shadow a newly added `AGENTS.md`. The upgrade is a constrained migration — move the hub, inline the rules, convert the links, refresh the skill — so it lives in its own file instead of adding a branch to every phase.
+- **Impact**: `INSTALL.md` routes v1 repos to `UPGRADE.md` before Phase 1. The upgrade reuses the migration-map template, the Post-Install Validation checklist, and the Phase 5 cleanup rules.
+
 ## 2026-06-05 — Ship generic `updating-docs` skill to every target repo
 
 - **Decision**: add `.claude/skills/updating-docs/SKILL.md` to install-obsidian and have PHASES/03-implement step 3.6 copy it to the target repo's `.claude/skills/updating-docs/`. Treat the skill as a core output in both `strict` and `adaptive` modes.
@@ -25,6 +49,7 @@
 - **Decision**: keep immutable rules in `./.claude/rules/` and use `CLAUDE.md` as operational hub.
 - **Why**: reduce accidental overwrite risk in session-level edits and prompt-driven changes.
 - **Impact**: agents must read stable rules first, then apply session instructions.
+- **Status**: superseded on 2026-11-17 — stable rules now live inline in `AGENTS.md`.
 
 ## 2026-04-21 — Keep an authoritative directory tree in CLAUDE.md
 

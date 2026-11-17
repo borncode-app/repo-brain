@@ -9,7 +9,7 @@
 
 ### 1. Hybrid by design: installer core + inspired knowledge practices
 
-Keep the install-obsidian core intact (phase flow, stable rules, migration safety, practical gates),
+Keep the repo-brain installer core intact (phase flow, stable rules, migration safety, practical gates),
 and apply llm-wiki-inspired practices as a complementary layer:
 
 - Modular docs (small, focused topics)
@@ -30,7 +30,7 @@ Documentation structure must reflect the ACTUAL repo structure. Do not impose a 
 ### 3. Hub-and-spoke architecture
 
 ```
-CLAUDE.md (hub)
+AGENTS.md (hub)  <──  CLAUDE.md (one line: @AGENTS.md)
     ├── links to → docs/_index.md (navigation)
     ├── links to → docs/project/* (project knowledge)
     ├── links to → docs/architecture/* (structure knowledge)
@@ -38,7 +38,8 @@ CLAUDE.md (hub)
     └── links to → docs/reference/* (stable reference)
 ```
 
-- **CLAUDE.md** = front door. Compact. Link-heavy. No encyclopedia.
+- **AGENTS.md** = front door for every agent. Compact. Link-heavy. No encyclopedia.
+- **CLAUDE.md** = a pointer to that door, not a second one: a single import line, so Claude Code enters through the same hub.
 - **docs/_index.md** = second door. Full navigation map.
 - **Category folders** = rooms. Each doc = one focused topic.
 
@@ -54,15 +55,22 @@ If the answer to all three is "no", do not create it.
 
 ### 5. Link generously, duplicate never
 
-- Use wiki links: `[[docs/project/overview]]`
+- Use standard relative Markdown links: `[docs/project/overview.md](../project/overview.md)`
+  - **href** — the path relative to the file that contains the link, with the `.md` extension
+  - **text** — in navigation sections (Read First, Task Routing, Documentation Map, Read With, Related), the target's path from the repo root
 - When information exists elsewhere, link to it instead of rewriting it
 - Every doc should have a `Related:` section at the bottom
 
-### 6. CLAUDE.md is for AI onboarding
+One format serves every reader: an agent opens the path in the link text, GitHub and editors follow the href, and Obsidian draws the same link in its graph view.
 
-CLAUDE.md should contain ONLY:
+### 6. AGENTS.md is for AI onboarding
+
+`AGENTS.md` is the instruction file agents share: Codex, Cursor, GitHub Copilot, and [many others](https://agents.md) read it directly, and Claude Code reads it through the `@AGENTS.md` import in `CLAUDE.md`. Whatever every agent must know goes here, once.
+
+AGENTS.md should contain ONLY:
 
 - Project identity (name, stack, version)
+- Stable rules (non-negotiable, one line each)
 - Read-first links
 - Quick commands
 - Working rules
@@ -70,7 +78,7 @@ CLAUDE.md should contain ONLY:
 - Key warnings for risky areas
 - Doc Workflow (so AI knows to auto-create docs for new features)
 
-CLAUDE.md should NOT contain:
+AGENTS.md should NOT contain:
 
 - Detailed architecture explanations
 - Full dependency lists
@@ -83,16 +91,16 @@ When a feature doc was created from a design spec or implementation plan, add a 
 
 ```markdown
 ## Design Origin
-- Spec: [[path-to-spec]]
-- Plan: [[path-to-plan]]
+- Spec: [path/to/spec.md](../../path/to/spec.md)
+- Plan: [path/to/plan.md](../../path/to/plan.md)
 ```
 
 This helps AI agents understand where a feature came from and find the original design decisions.
 
 ### 8. Optimize for the graph, but usefulness first
 
-- Wiki links make Obsidian graph meaningful
-- Hub docs (CLAUDE.md, _index.md) should connect to many spokes
+- Links make the doc graph meaningful — on GitHub, in an editor, or in Obsidian graph view
+- Hub docs (AGENTS.md, _index.md) should connect to many spokes
 - Spoke docs should connect to related spokes
 - But never add links that don't help navigation — visual prettiness is secondary
 
@@ -104,12 +112,12 @@ Every doc (except hub and index docs) must include:
 - **Trigger** — task-based situations that require this doc
 - **Read With** — sibling docs needed alongside this one
 
-Link format in Read With must always be dual:
-`path/to/file.md` [[wiki-link]] — reason
+Link format in Read With:
+`[docs/path/file.md](../path/file.md) — reason`
 
-This serves both purposes simultaneously:
-- `backtick path` → AI agent navigates to real file
-- `[[wiki-link]]` → Obsidian graph draws the edge
+One link serves both purposes:
+- link text → the real path from the repo root, so an AI agent navigates straight to the file
+- href → GitHub, editors, and Obsidian resolve it and draw the graph edge
 
 ### 10. Context and rationale beat file-summary dumps
 
@@ -145,11 +153,13 @@ Not every repo needs every category. Create only what the codebase justifies.
 |-------------|-------------|
 | One doc per folder regardless of value | Creates noise, dilutes graph |
 | Copying README into docs/overview.md | Duplication, maintenance burden |
-| Giant CLAUDE.md with everything | AI context waste, hard to update |
+| Giant AGENTS.md with everything | AI context waste, hard to update |
+| Rules or hub content kept in an agent-specific file | Other agents never load it, and the copies drift apart |
 | Empty docs "for completeness" | Worse than no docs — misleading |
 | Static hardcoded paths in templates | Breaks when used in different repos |
 | No links between docs | Isolated nodes, graph is useless |
-| "Related" section with wiki links only | AI can't tell when or why to follow the link |
+| `[[wiki-links]]` | Plain text on GitHub; an agent has to guess the path and extension |
+| "Related" section with bare links only | AI can't tell when or why to follow the link |
 | Too many low-value docs created "just in case" | Knowledge drift, maintenance burden, weak signal |
 | File-by-file summaries without rationale | Not useful for decision-making or onboarding |
 
@@ -159,8 +169,8 @@ Not every repo needs every category. Create only what the codebase justifies.
 
 The documentation system is successful when:
 
-1. A new AI agent can read CLAUDE.md and immediately know where to find information
-2. The Obsidian graph shows meaningful clusters, not isolated islands
+1. Any AI agent can read AGENTS.md and immediately know where to find information
+2. The link graph shows meaningful clusters, not isolated islands
 3. Adding a new feature doc is a 5-minute task (template + fill + link)
 4. No doc contains information that's obvious from reading the code
 5. Every doc has at least 2 incoming links from other docs

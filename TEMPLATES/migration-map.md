@@ -1,6 +1,6 @@
 # Template: Migration Map
 
-> Use for: section-by-section migration planning and verification (especially `AGENTS.md`)
+> Use for: section-by-section migration planning and verification (legacy instruction files such as `CLAUDE.md` and `.claude/rules/*`, and old docs)
 > Location: `docs/project/migration-map.md` (or equivalent design artifact in Phase 2 output)
 
 ---
@@ -22,10 +22,10 @@
 
 ### Read With
 
-- `path/to/file.md` [[wiki-link]] — reason
+- [docs/path/file.md](../path/file.md) — reason
 
 ## Scope
-- Source files: [e.g., AGENTS.md, old-doc.md]
+- Source files: [e.g., CLAUDE.md, .claude/rules/stable-rules.md, old-doc.md]
 - Migration mode: [strict/adaptive]
 - Owner: [human/agent]
 - Hybrid intent: [how installer core is preserved while inspired-layer improvements are applied]
@@ -33,7 +33,8 @@
 ## Section Mapping
 | Source file | Source section | Destination file | Destination section | Migration method (rewrite/link/keep) | Verification evidence | Status |
 |-------------|----------------|------------------|---------------------|---------------------------------------|-----------------------|--------|
-| AGENTS.md | [section name] | [[docs/...]] | [heading] | rewrite | [dest heading + summary] | mapped |
+| CLAUDE.md | [section name] | AGENTS.md | [heading] | rewrite | [dest heading + summary] | mapped |
+| old-doc.md | [section name] | [docs/path/file.md](../path/file.md) | [heading] | rewrite | [dest heading + summary] | mapped |
 
 Status values:
 - `mapped` — planned destination exists
@@ -54,11 +55,13 @@ Status values:
 ## Removal Candidates
 | File | Eligible for removal? | Reason | Preconditions |
 |------|------------------------|--------|---------------|
-| AGENTS.md | no/yes | [why] | all sections verified + human approval |
+| .claude/rules/stable-rules.md | no/yes | [why] | all sections verified + human approval |
+
+> `AGENTS.md` is the hub and is never removed. `CLAUDE.md` is never removed either: once its sections are verified, its content is replaced by the one-line import `@AGENTS.md`.
 
 ---
 
-Related: [[PHASES/02-design]] | [[PHASES/03-implement]] | [[PHASES/05-cleanup]]
+Related: [docs/path/doc-1.md](../path/doc-1.md) | [docs/path/doc-2.md](../path/doc-2.md)
 ```
 
 ## Guidelines

@@ -35,12 +35,16 @@ Also detect any additional files that may now be redundant:
 3. **Flag uncertainties** — if any content might have been lost, mark as `uncertain`
 4. **Protect rationale context** — do not mark files removable if unique decision context has not been migrated
 
-If the file is `AGENTS.md`, section-level verification is mandatory and must reference
-the mapping produced in [PHASES/02-design.md](02-design.md) (recommended format: [TEMPLATES/migration-map.md](../TEMPLATES/migration-map.md)).
+If the file is a legacy instruction file (`.claude/rules/*` or another agent-specific instruction file),
+section-level verification is mandatory and must reference the mapping produced in
+[PHASES/02-design.md](02-design.md) (recommended format: [TEMPLATES/migration-map.md](../TEMPLATES/migration-map.md)).
+
+`AGENTS.md` and `CLAUDE.md` are never removal candidates: `AGENTS.md` is the hub, and `CLAUDE.md` carries the
+import that makes Claude Code load it.
 
 ### 5.2 Detect Installer Directory
 
-Check if `install-obsidian/` (this installer) exists in the repo root.
+Check if the installer directory exists in the repo root: `repo-brain/`, or `install-obsidian/` when it was cloned before the rename.
 
 - If found, note its path and size
 - If not found (installer was run from outside the repo), skip this step
@@ -53,14 +57,14 @@ Show the human a structured report of everything identified:
 ## Cleanup Report
 
 ### Files with migrated content (verified)
-- [ ] `AGENTS.md` — content moved to [[docs/project/overview]], [[docs/architecture/structure]]
-- [ ] `path/to/old-file.md` — content moved to [[docs/features/workflow]]
+- [ ] `.claude/rules/stable-rules.md` — content moved to `AGENTS.md` (Stable Rules)
+- [ ] `path/to/old-file.md` — content moved to `docs/features/workflow.md`
 
 ### Files with uncertain migration
 - [ ] `path/to/risky-file.md` — partial migration, some content may be lost
 
 ### Installer directory
-- [ ] `install-obsidian/` — the installer itself (can be re-downloaded if needed)
+- [ ] `repo-brain/` — the installer itself (can be re-downloaded if needed)
 
 ### Files to preserve (do NOT delete)
 - [list any files that were NOT migrated or should be kept]
@@ -70,9 +74,9 @@ Show the human a structured report of everything identified:
 
 For EACH item in the report, ask the human individually:
 
-> "Delete `AGENTS.md`? Its content has been verified in:
-> - [[docs/project/overview]] (sections X, Y)
-> - [[docs/architecture/structure]] (section Z)
+> "Delete `.claude/rules/stable-rules.md`? Its content has been verified in:
+> - `AGENTS.md` → Stable Rules (rules X, Y)
+> - `docs/reference/conventions.md` (section Z)
 >
 > [yes / no / skip]"
 
@@ -81,25 +85,27 @@ Rules:
 - **Never delete `uncertain` files** unless the human explicitly overrides
 - **Never delete files not in the report** — if a file wasn't analyzed, don't touch it
 - If the human says "no" or "skip" for any file, preserve it
-- **Never delete `AGENTS.md`** unless every meaningful section is `verified` with section-level evidence
+- **Never delete a legacy instruction file** unless every meaningful section is `verified` with section-level evidence
+- **Never delete `AGENTS.md` or `CLAUDE.md`**
 
 ### 5.5 Execute Cleanup
 
 After receiving confirmation for each item:
 
 1. Delete only the files the human approved
-   - Keep `AGENTS.md` if any section is `uncertain` or missing evidence
-2. If `install-obsidian/` was approved for deletion, remove the entire directory
+   - Keep any legacy instruction file with a section that is `uncertain` or missing evidence
+2. If the installer directory was approved for deletion, remove the entire directory
 3. Verify no broken links were created by the deletion:
-   - Search all docs for wiki links to deleted files
+   - Search all docs for links to deleted files
    - If broken links are found, report them immediately and offer to fix
 
 ### 5.6 Post-Cleanup Verification
 
-- [ ] No broken wiki links remain
+- [ ] No broken links remain
 - [ ] No referenced files were accidentally deleted
 - [ ] docs/_index.md still links to valid files
-- [ ] CLAUDE.md Documentation Map still links to valid files
+- [ ] AGENTS.md Documentation Map still links to valid files
+- [ ] `CLAUDE.md` still starts with the import `@AGENTS.md`
 - [ ] No unique rationale/decision context was removed during cleanup
 
 ---
@@ -124,7 +130,7 @@ Present the cleanup result:
 - [checklist results]
 ```
 
-If the installer directory (`install-obsidian/`) was deleted, note that this
+If the installer directory was deleted, note that this
 conversation was driving the installer and the human should be aware it is gone.
 
 ---

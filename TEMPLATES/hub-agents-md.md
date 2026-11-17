@@ -1,18 +1,18 @@
-# Template: CLAUDE.md Hub
+# Template: AGENTS.md Hub
 
-> Use for: CLAUDE.md — the file that AI agents read first
-> Location: repo root
+> Use for: `AGENTS.md` — the single source of truth that every AI agent reads first
+> Location: repo root, with a one-line `CLAUDE.md` next to it (see CLAUDE.md Companion below)
 
 ---
 
 ## Structure
 
-```markdown
+````markdown
 # [Project Name] — Project Hub
 
-> Central operational hub for AI agents working on this codebase.
-> For full documentation index, see [[docs/_index]].
-> Stable/non-negotiable rules are stored in `./.claude/rules/`.
+> Single source of truth for AI agents working on this codebase. Every agent reads this file first.
+> `CLAUDE.md` contains only the import `@AGENTS.md`, so Claude Code loads this same file.
+> For the full documentation index, see [docs/_index.md](docs/_index.md).
 
 ---
 
@@ -28,13 +28,25 @@
 
 ---
 
+## Stable Rules
+
+> Non-negotiable. They apply to every task and every agent, and task-level prompts do not relax them.
+> Change this section only with explicit human approval.
+
+1. **[Rule 1]** — [security, compliance, or permanent project constraint]
+2. **[Rule 2]** — [constraint]
+... (one line per rule; when a rule needs explanation, keep the line here and link to a doc)
+
+**Coding behavior** — think before coding, simplicity first, surgical changes, goal-driven execution. Read the full text before changing any file: [.claude/rules/coding-behavior-rules.md](.claude/rules/coding-behavior-rules.md).
+
+---
+
 ## Read First
 
-- `/.claude/rules/*` — Stable rules (security/compliance/always-on)
-- `/.claude/skills/updating-docs/SKILL.md` — Doc-update skill (read-first, write-second discipline)
-- [[docs/_index]] — Full documentation map
-- [[docs/project/overview]] — Project identity and stack
-- [[README]] — User-facing introduction
+- [docs/_index.md](docs/_index.md) — Full documentation map
+- [docs/project/overview.md](docs/project/overview.md) — Project identity and stack
+- [.claude/skills/updating-docs/SKILL.md](.claude/skills/updating-docs/SKILL.md) — Doc-update procedure; follow it before writing in `docs/`
+- [README.md](README.md) — User-facing introduction
 
 ---
 
@@ -44,7 +56,7 @@
 
 | Task | Read First |
 |------|------------|
-| [task type] | `path/to/file.md` |
+| [task type] | [docs/path/file.md](docs/path/file.md) |
 
 ---
 
@@ -54,6 +66,7 @@
 [project-root]/
 ├── .claude/
 │   ├── rules/
+│   │   └── coding-behavior-rules.md
 │   └── skills/
 │       └── updating-docs/
 │           └── SKILL.md
@@ -63,6 +76,7 @@
 │   ├── architecture/
 │   ├── features/
 │   └── ...
+├── AGENTS.md
 ├── CLAUDE.md
 └── decisions.md
 ```
@@ -89,11 +103,11 @@
 ... (keep to 5-8 rules, repo-specific)
 
 > Put only operational/session rules here.
-> Put stable rules in `./.claude/rules/`.
+> Put non-negotiable rules in `## Stable Rules` above.
 
 ## Hybrid Strategy
 
-- Preserve installer core requirements (phase flow, safety gates, stable rules separation)
+- Preserve installer core requirements (phase flow, safety gates, stable rules)
 - Apply inspired-layer practices (modular docs, useful cross-links, living updates, rationale-first content)
 - Prefer high-signal docs; avoid low-value expansion
 
@@ -107,7 +121,7 @@ When creating or significantly modifying a feature:
 2. **Feature doc** — create in `docs/features/` or appropriate category
 3. **Design Origin** — link to spec/plan if applicable
 4. **Link here** — add entry to Documentation Map below
-5. **Link related docs** — add wiki links in Related section
+5. **Link related docs** — add relative Markdown links in the Related section
 
 ### Where to put docs
 
@@ -123,25 +137,25 @@ When creating or significantly modifying a feature:
 ## Documentation Map
 
 ### Project
-- [[docs/project/overview]] — [one-line description]
-- [[docs/project/repository-map]] — [one-line description]
+- [docs/project/overview.md](docs/project/overview.md) — [one-line description]
+- [docs/project/repository-map.md](docs/project/repository-map.md) — [one-line description]
 ... (only include categories that have docs)
 
 ### Architecture
-- [[docs/architecture/...]] — [one-line description]
+- [docs/architecture/<name>.md](docs/architecture/<name>.md) — [one-line description]
 
 ### Features
-- [[docs/features/...]] — [one-line description]
+- [docs/features/<name>.md](docs/features/<name>.md) — [one-line description]
 
 ### Reference
-- [[docs/reference/...]] — [one-line description]
+- [docs/reference/<name>.md](docs/reference/<name>.md) — [one-line description]
 
 ---
 
 ## Key Warnings
 
-- **[Warning 1]** — see [[docs/path-to-detail]]
-- **[Warning 2]** — see [[docs/path-to-detail]]
+- **[Warning 1]** — see [docs/path/detail.md](docs/path/detail.md)
+- **[Warning 2]** — see [docs/path/detail.md](docs/path/detail.md)
 
 ---
 
@@ -153,7 +167,7 @@ When creating or significantly modifying a feature:
   - TypeScript repos: `tsc --noEmit`
 - [ ] Commit is scoped to one issue/change set
 - [ ] `decisions.md` updated for lasting design choices
-- [ ] CLAUDE.md updated to match current project state
+- [ ] `AGENTS.md` updated to match current project state
 
 ---
 
@@ -161,7 +175,7 @@ When creating or significantly modifying a feature:
 
 At the end of each work session:
 
-1. Update `CLAUDE.md` according to the current project state
+1. Update `AGENTS.md` according to the current project state (`## Stable Rules` changes only with human approval)
 2. Update `decisions.md` with new stable decisions
 3. Re-check Documentation Map and links
 
@@ -169,32 +183,45 @@ At the end of each work session:
 
 ## Related Files
 
-- [README.md](../README.md) — User-facing intro
-- [[AGENTS]] — (if preserved during transition)
-- `./.claude/rules/` — Stable rules
-- [decisions.md](../decisions.md) — Design decisions log
+- [README.md](README.md) — User-facing intro
+- [decisions.md](decisions.md) — Design decisions log
+- `CLAUDE.md` — One-line import of this file for Claude Code
+````
+
+## CLAUDE.md Companion
+
+Create `CLAUDE.md` in the repo root with exactly this content:
+
+```markdown
+@AGENTS.md
 ```
+
+- Claude Code expands the import at session start, so it loads the same hub as every other agent
+- A `CLAUDE.md` with content of its own makes Claude Code read that file instead of `AGENTS.md`, and the two hubs drift apart — keep it to the import line
+- Use the import, not a symlink: on Windows, Git checks a committed symlink out as a one-line text file unless `core.symlinks` is enabled
+- Only instructions that apply to Claude Code alone (for example, a Claude-only slash command) may follow the import line; everything that applies to every agent belongs in `AGENTS.md`
 
 ## Guidelines
 
-- Keep CLAUDE.md under 100 lines
+- Keep AGENTS.md under 200 lines — it loads into every session of every agent, so move detail into `docs/` and link to it
 - Every link must point to a real file
+- Use standard relative Markdown links; `AGENTS.md` sits at the repo root, so link text and href are the same path
+- Stable Rules hold only non-negotiable constraints, one line each, inline — `AGENTS.md` is the one file every agent loads
 - Working Rules must be specific to THIS repo (no generic rules)
-- Keep stable/non-negotiable rules outside CLAUDE.md in `./.claude/rules/`
 - Key Warnings should point to docs that explain the risk
 - Doc Workflow section must exist so AI knows to auto-create docs
 - Include and maintain a directory tree to reduce path confusion
 - Add/maintain a DoD + Session Closeout section
 - For Task Routing rows, derive tasks from Trigger sections across created docs
 - Use one row per distinct task type
-- In Task Routing, use real backtick file paths (not wiki links) in the Read First column
+- In Task Routing, link the real file in the Read First column
 - If adding hybrid guidance, keep it short and operational (not conceptual essays)
 
 ---
 
 ## Related
 
-- [[INSTALL]] — Main instruction flow that sets up CLAUDE.md
-- [[TEMPLATES/index-doc]] — The second navigation hub after CLAUDE.md
-- [[PHASES/02-design]] — Phase that designs the CLAUDE.md structure
-- [[PHASES/03-implement]] — Phase that creates CLAUDE.md
+- [INSTALL.md](../INSTALL.md) — Main instruction flow that sets up AGENTS.md
+- [TEMPLATES/index-doc.md](index-doc.md) — The second navigation hub after AGENTS.md
+- [PHASES/02-design.md](../PHASES/02-design.md) — Phase that designs the AGENTS.md structure
+- [PHASES/03-implement.md](../PHASES/03-implement.md) — Phase that creates AGENTS.md and CLAUDE.md

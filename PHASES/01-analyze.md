@@ -75,7 +75,11 @@ Build a complete mental model of the repository by analyzing its actual structur
 - What docs already exist?
 - What docs have valuable information that should be preserved?
 - What docs are outdated or empty?
-- Is there an existing CLAUDE.md or AGENTS.md?
+- Which agent instruction files exist?
+  - AGENTS.md (it becomes the hub)
+  - Legacy instruction files: CLAUDE.md, .claude/rules/*, and other agent-specific
+    files (.github/copilot-instructions.md, .cursorrules, .cursor/rules/, GEMINI.md)
+```
 
 ### 1.7 Hybrid Fit Notes
 
@@ -84,7 +88,6 @@ Build a complete mental model of the repository by analyzing its actual structur
 - Identify where rationale/decision context is missing from existing docs
 - Identify likely cross-link hubs needed for graph usefulness
 - Flag areas where doc duplication risk is high
-```
 ```
 
 ---
@@ -116,6 +119,9 @@ Present your findings as a structured analysis:
 
 ### Existing Docs
 [What documentation exists and its quality]
+
+### Existing Instruction Files
+[AGENTS.md and legacy instruction files found, and what each one contains]
 
 ### Documentation Gaps
 [What's missing? What would help onboarding?]

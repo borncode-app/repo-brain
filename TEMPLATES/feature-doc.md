@@ -28,7 +28,7 @@
 
 ### Read With
 
-- `path/to/file.md` [[wiki-link]] — reason
+- [docs/path/file.md](../path/file.md) — reason
 
 ## Flow / User Journey
 [Step-by-step walkthrough of how a user interacts with this feature.
@@ -50,13 +50,13 @@ Table format: config key, default, purpose.]
 - Impact: [what implementers/operators must know]
 
 ## Design Origin
-- Spec: [[path-to-spec]]
-- Plan: [[path-to-plan]]
+- Spec: [path/to/spec.md](../../path/to/spec.md)
+- Plan: [path/to/plan.md](../../path/to/plan.md)
 (Include only if a spec/plan exists. Omit entire section if not.)
 
 ---
 
-Related: [[linked-doc-1]] | [[linked-doc-2]]
+Related: [docs/path/doc-1.md](../path/doc-1.md) | [docs/path/doc-2.md](../path/doc-2.md)
 ```
 
 ## Guidelines

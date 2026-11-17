@@ -28,7 +28,7 @@
 
 ### Read With
 
-- `path/to/file.md` [[wiki-link]] — reason
+- [docs/path/file.md](../path/file.md) — reason
 
 ## Structure
 [Visual representation — tree diagram, layer diagram, or composition table.
@@ -54,7 +54,7 @@ Step-by-step guide for common extension patterns.]
 
 ---
 
-Related: [[linked-doc-1]] | [[linked-doc-2]]
+Related: [docs/path/doc-1.md](../path/doc-1.md) | [docs/path/doc-2.md](../path/doc-2.md)
 ```
 
 ## Guidelines

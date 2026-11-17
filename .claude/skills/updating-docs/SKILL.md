@@ -1,13 +1,13 @@
 ---
 name: updating-docs
-description: Use when user asks to update, add, or modify documentation in `docs/` of this repository, when creating a new feature/architecture/reference/project doc, or when an agent is about to write in `docs/` and has not read `CLAUDE.md` and `.claude/rules/*` in the current session. Triggers on "update docs", "document this", "add a doc for X", "เขียน docs", "อัพเดทเอกสาร". Forces read-first discipline to prevent orphan docs, contradicted stable rules, and broken wiki links.
+description: Use when user asks to update, add, or modify documentation in `docs/` of this repository, when creating a new feature/architecture/reference/project doc, when an agent is about to write in `docs/` and has not read `AGENTS.md` in the current session, or when docs are orphaned, contradict stable rules, or contain broken links. Triggers on "update docs", "document this", "add a doc for X", "เขียน docs", "อัพเดทเอกสาร".
 ---
 
 # Updating Docs
 
 ## Overview
 
-This skill enforces the **read-first, write-second** discipline for documentation work. Stable rules live in `.claude/rules/`, an authoritative tree lives in `CLAUDE.md`, and the wiki-link convention only works if every doc follows the pattern. Skipping context before writing creates orphan docs that future agents cannot find.
+This skill enforces the **read-first, write-second** discipline for documentation work. The stable rules, the authoritative directory tree, and the Documentation Map all live in `AGENTS.md` — the hub every agent reads — and the link convention only works if every doc follows the pattern. Skipping context before writing creates orphan docs that future agents cannot find.
 
 **Core principle:** Future agents must be able to navigate this repo from docs alone. Every doc is a memory cell — a disconnected doc is a lost memory.
 
@@ -16,27 +16,25 @@ This skill enforces the **read-first, write-second** discipline for documentatio
 - User says "update docs", "document this", "อัพเดทเอกสาร", "เขียน doc", "เพิ่ม doc"
 - Creating a new feature/architecture/reference/project/integration/build/testing doc
 - Modifying an existing doc and unsure of structure
-- Touching `CLAUDE.md` Documentation Map
-- An agent is about to write in `docs/` and has not read `CLAUDE.md` in this session
+- Touching `AGENTS.md` Documentation Map
+- An agent is about to write in `docs/` and has not read `AGENTS.md` in this session
 
 **Do NOT use for:**
 - Inline code comments (use language conventions instead)
 - `CHANGELOG.md` entries (use Keep a Changelog format)
 - Decisions log (`decisions.md` has its own format)
-- This repo's own governance files (top-level `README`, `INSTALL`, `PRINCIPLES`, `CONTRIBUTING`, `CHANGELOG`, `CLAUDE.md`) — those follow a different convention and are maintained outside this skill's scope
+- This repo's own governance files (top-level `README`, `INSTALL`, `PRINCIPLES`, `CONTRIBUTING`, `CHANGELOG`, `AGENTS.md`, `CLAUDE.md`) — those follow a different convention and are maintained outside this skill's scope, apart from the `AGENTS.md` Documentation Map and Task Routing rows this skill updates
 
 ## Required Pre-Reading (MUST do before writing)
 
 **Iron Law: no doc written before these are read in this session.**
 
 ```bash
-# 1. Project hub — has the directory tree and documentation map
-Read CLAUDE.md
+# 1. Project hub — Stable Rules (NON-NEGOTIABLE), directory tree, Task Routing, Documentation Map
+Read AGENTS.md
 
-# 2. Stable rules — these are NON-NEGOTIABLE
-Read .claude/rules/stable-rules.md
-Read .claude/rules/coding-behavior-rules.md
-Read .claude/rules/security-rules.md   # if doc touches auth/data/secrets
+# 2. Rule docs that AGENTS.md links for your topic
+Read .claude/rules/coding-behavior-rules.md   # if doc is about coding workflow
 
 # 3. Existing sibling doc — match its style, not invent a new one
 Read docs/_index.md                       # see where your doc will live
@@ -50,21 +48,21 @@ Read the closest existing doc in the same category
 ```dot
 digraph doc_workflow {
     "User asks to update/add doc" [shape=doublecircle];
-    "Read CLAUDE.md + .claude/rules/*" [shape=box];
+    "Read AGENTS.md (hub + Stable Rules)" [shape=box];
     "Read existing sibling doc in same category" [shape=box];
     "Pick category" [shape=box];
     "Write doc following sibling structure" [shape=box];
     "Update docs/_index.md table" [shape=box];
-    "Update CLAUDE.md Documentation Map" [shape=box];
-    "Verify cross-links >=2 wiki links per doc" [shape=box];
+    "Update AGENTS.md Documentation Map" [shape=box];
+    "Verify >=2 links per doc, every link resolves" [shape=box];
 
-    "User asks to update/add doc" -> "Read CLAUDE.md + .claude/rules/*" [label="RED: must do first"];
-    "Read CLAUDE.md + .claude/rules/*" -> "Read existing sibling doc in same category";
+    "User asks to update/add doc" -> "Read AGENTS.md (hub + Stable Rules)" [label="RED: must do first"];
+    "Read AGENTS.md (hub + Stable Rules)" -> "Read existing sibling doc in same category";
     "Read existing sibling doc in same category" -> "Pick category";
     "Pick category" -> "Write doc following sibling structure";
     "Write doc following sibling structure" -> "Update docs/_index.md table";
-    "Update docs/_index.md table" -> "Update CLAUDE.md Documentation Map";
-    "Update CLAUDE.md Documentation Map" -> "Verify cross-links >=2 wiki links per doc";
+    "Update docs/_index.md table" -> "Update AGENTS.md Documentation Map";
+    "Update AGENTS.md Documentation Map" -> "Verify >=2 links per doc, every link resolves";
 }
 ```
 
@@ -106,16 +104,16 @@ Bullets or table of the key facts a reader needs upfront.
 - Symptom or task that signals this doc applies.
 
 ### Read With
-- `path/to/file.md` [[wiki-link]] — reason
+- [docs/path/file.md](../path/file.md) — reason
 
 ## [Main content sections...]
 - Use H2 for major sections, H3 for sub-sections.
 - Include code blocks for non-trivial examples.
-- Cross-link to related docs with `[[docs/path/file]]` syntax.
+- Cross-link to related docs with relative Markdown links (see Link Syntax below).
 
 ## Related
-- [[docs/related-1]] — why it's related
-- [[docs/related-2]] — why it's related
+- [docs/path/related-1.md](../path/related-1.md) — why it's related
+- [docs/path/related-2.md](../path/related-2.md) — why it's related
 ```
 
 **Length guideline:** <500 words for most docs. If you need more, ask whether it should be split.
@@ -124,12 +122,12 @@ Bullets or table of the key facts a reader needs upfront.
 
 After writing the doc, verify ALL of these:
 
-- [ ] **1. Wiki links**: Doc has >= 2 `[[docs/...]]` cross-links
+- [ ] **1. Links**: Doc has >= 2 relative Markdown links to other docs, and every link resolves to an existing file
 - [ ] **2. `_index.md` updated**: New row added in the correct category table
-- [ ] **3. `CLAUDE.md` Documentation Map updated**: New row added under the right heading
-- [ ] **4. CLAUDE.md Task Routing updated** (if the doc adds a new "if you are working on X → read Y" path)
+- [ ] **3. `AGENTS.md` Documentation Map updated**: New row added under the right heading
+- [ ] **4. `AGENTS.md` Task Routing updated** (if the doc adds a new "if you are working on X → read Y" path)
 - [ ] **5. Language**: Match the repo's content language for user-facing examples, English for code/config (per stable rules)
-- [ ] **6. No contradictions with `.claude/rules/stable-rules.md`**: Re-read stable rules before declaring done
+- [ ] **6. No contradictions with `AGENTS.md` Stable Rules**: Re-read them before declaring done
 
 **If any item unchecked, the doc is not done.** The user will assume you did all 6.
 
@@ -139,11 +137,11 @@ After writing the doc, verify ALL of these:
 |---------|----------------|-----|
 | Doc not findable from `_index.md` | Agent forgot index step | Always include the index update in your workflow — it is part of "the doc" |
 | Doc contradicts a stable rule | Agent skipped pre-reading | Re-read rules — pre-reading is iron law, no exceptions |
-| Doc uses raw path `docs/features/X.md` | Agent did not know wiki-link syntax | Use `[[docs/features/X]]` everywhere — Obsidian-compatible |
+| Doc uses a `[[wiki-link]]` or a bare path | Agent did not know the link convention | Use a relative Markdown link — `[docs/features/X.md](../features/X.md)` — it resolves for agents, on GitHub, and in Obsidian |
 | Orphan doc, no related links | Agent stopped after writing the doc | Section "## Related" is mandatory, not optional |
 | Doc explains things obvious from code | Agent over-explained | Match sibling doc depth; if sibling has 50 lines, yours should not have 500 |
 | One doc per folder regardless of value | Agent over-applied category rule | Categories are rooms, not slots — skip empty rooms |
-| Doc duplicates content from CLAUDE.md | Agent did not check the hub first | Link to CLAUDE.md instead of rewriting |
+| Doc duplicates content from AGENTS.md | Agent did not check the hub first | Link to AGENTS.md instead of rewriting |
 | Doc has 3 paragraphs of "history of how we got here" | Agent wrote narrative | Cut to Overview + Context Snapshot — narrative goes in commits |
 
 ## Red Flags — STOP and Restart
@@ -161,26 +159,29 @@ If you catch yourself doing any of these, delete the doc and start over:
 
 **All of these mean: delete what you wrote, re-read the rules, and start over following the workflow.**
 
-## Quick Reference: Wiki Link Syntax
+## Quick Reference: Link Syntax
+
+The href is relative to the file you are editing and keeps the `.md` extension. In navigation sections (Read With, Related, `docs/_index.md`, the Documentation Map) the link text is the target's path from the repo root.
 
 ```markdown
-# GOOD — Obsidian-compatible, clickable in supported editors
-[[docs/features/X]]
-[[docs/reference/Y]]
-[[CLAUDE]]
+# GOOD — standard relative Markdown link
+[docs/features/X.md](../features/X.md)      # written in docs/architecture/
+[docs/features/X.md](X.md)                  # written in docs/features/
+[docs/features/X.md](features/X.md)         # written in docs/_index.md
+[docs/features/X.md](docs/features/X.md)    # written in AGENTS.md (repo root)
 
-# BAD — raw path, not a link
-[docs/features/X.md](docs/features/X.md)
+# BAD — not a working link on GitHub or for agents
+[[docs/features/X]]
 docs/features/X.md
 ```
 
 ## Quick Reference: When to Read Which Rule
 
-| Rule file | Read before docs that touch... |
-|-----------|-------------------------------|
-| `stable-rules.md` | Always |
-| `coding-behavior-rules.md` | Docs about coding workflow, TDD, surgical changes |
-| `security-rules.md` | Docs about auth, sessions, file uploads, secrets, admin routes |
+| Rule source | Read before docs that touch... |
+|-------------|-------------------------------|
+| `AGENTS.md` → Stable Rules | Always |
+| `.claude/rules/coding-behavior-rules.md` | Docs about coding workflow, TDD, surgical changes |
+| Any other rule doc linked from `AGENTS.md` | The topic that rule doc covers |
 
 ## Real Example: Adding a New Feature Doc
 
@@ -188,8 +189,7 @@ docs/features/X.md
 
 **Step 1 — Read (RED phase):**
 ```bash
-Read CLAUDE.md
-Read .claude/rules/stable-rules.md
+Read AGENTS.md
 Read docs/_index.md
 Read docs/features/closest-sibling.md
 ```
@@ -200,16 +200,15 @@ Read docs/features/closest-sibling.md
 
 **Step 4 — Update both maps:**
 - `docs/_index.md` → add row in "Features" table
-- `CLAUDE.md` → add row in Documentation Map "Features" section
+- `AGENTS.md` → add row in Documentation Map "Features" section
 
-**Step 5 — Cross-link:** `[[docs/features/closest-sibling]]`, `[[docs/architecture/tech-stack]]`
+**Step 5 — Cross-link:** `[docs/features/closest-sibling.md](closest-sibling.md)`, `[docs/architecture/tech-stack.md](../architecture/tech-stack.md)`
 
 **Step 6 — Verify:** Run through the 6-item checklist above.
 
 ## Related
 
-- [CLAUDE.md](../../../CLAUDE.md) — Project hub, has the directory tree and Documentation Map
-- [.claude/rules/stable-rules.md](../../rules/stable-rules.md) — Non-negotiable rules every doc must respect
-- [[docs/_index]] — Documentation index you must update when adding a doc
+- `AGENTS.md` — Project hub: Stable Rules, directory tree, Task Routing, and the Documentation Map
+- `docs/_index.md` — Documentation index you must update when adding a doc
 - `TEMPLATES/*` in this repo (if present) — doc structure templates; match your new doc to the closest existing sibling
 - `docs/features/<closest-sibling>` — the most similar existing doc in the same category; match its style

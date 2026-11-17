@@ -28,7 +28,7 @@
 
 ### Read With
 
-- `path/to/file.md` [[wiki-link]] — reason
+- [docs/path/file.md](../path/file.md) — reason
 
 ## Prerequisites
 [Tools and versions required to build.
@@ -61,7 +61,7 @@ Only if applicable to the project.]
 
 ---
 
-Related: [[linked-doc-1]] | [[linked-doc-2]]
+Related: [docs/path/doc-1.md](../path/doc-1.md) | [docs/path/doc-2.md](../path/doc-2.md)
 ```
 
 ## Guidelines
