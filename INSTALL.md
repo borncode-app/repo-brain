@@ -22,6 +22,15 @@ Check which flow applies:
 - **The repo has the v1 layout** — it was installed with `install-obsidian`: `CLAUDE.md` holds a `## Documentation Map` and `docs/_index.md` exists → stop here and follow [UPGRADE.md](UPGRADE.md).
 - **Anything else** → continue with this file.
 
+### Reached this file from a URL instead of a clone
+
+Someone pasted a prompt that sent you to the GitHub repo, so there is no local `repo-brain/` folder. Two rules then:
+
+- **Resolve every relative link in this file and the phases against the raw base**: `https://raw.githubusercontent.com/borncode-app/repo-brain/main/<path>`. `PHASES/01-analyze.md` becomes `https://raw.githubusercontent.com/borncode-app/repo-brain/main/PHASES/01-analyze.md`.
+- **Fetch lazily** — read a phase file when you reach it, and read the two shipped files (`.claude/rules/coding-behavior-rules.md`, `.claude/skills/updating-docs/SKILL.md`) at their raw URLs when steps 3.5 and 3.6 need them. Do not hold the whole installer in context.
+
+If fetching fails because the sandbox has no network, stop and ask the human for a shallow clone rather than reconstructing the flow from memory. [AGENT-INSTALL.md](AGENT-INSTALL.md) covers the per-agent detail.
+
 ## One Hub for Every Agent (mandatory)
 
 - **`AGENTS.md` is the single source of truth.** Project identity, stable rules, task routing, and the documentation map live there, because it is the one instruction file every agent loads.
@@ -230,6 +239,7 @@ If the repo is a single-file project or lacks identifiable directories:
 
 ## Related
 
+- [AGENT-INSTALL.md](AGENT-INSTALL.md) — Remote install entry point for agents that were pointed at the repo URL
 - [README.md](README.md) — Project overview and usage guide
 - [UPGRADE.md](UPGRADE.md) — Flow for repos that already have the v1 (`install-obsidian`) layout
 - [PRINCIPLES.md](PRINCIPLES.md) — Design philosophy that governs all decisions

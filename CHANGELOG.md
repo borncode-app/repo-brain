@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- `skills/repo-brain-install/SKILL.md` — the install as an agent skill. `npx skills add borncode-app/repo-brain --skill repo-brain-install` and "set up repo-brain in this repo" is enough; it routes to `AGENT-INSTALL.md` and the phases instead of restating them, and lists the fetch traps (summarizing fetch tools, no-network sandboxes) plus the gates a run must not skip
+- AGENT-INSTALL.md — remote install entry point: an agent pointed at the GitHub URL resolves every relative installer link against `https://raw.githubusercontent.com/borncode-app/repo-brain/main/<path>`, fetches phases lazily, and copies the two shipped files from their raw URLs. Also records which agents fetch cleanly (Claude Code needs `curl` + `Read`, Codex CLI defaults to no network) and when to fall back to a shallow clone
+
+### Changed
+- README.md: "How to Use" (Option A clone / Option B feed phases) is replaced by three entry points — a paste-in prompt that needs no clone, `npx skills add` for agents that support skills, and a shallow clone when network is blocked — with a table for choosing between them
+- PHASES/03-implement.md: distinguishes **entry-point skills** (`skills/<name>/`) from **shipped skills** (`.claude/skills/<name>/`); only shipped skills are copied to targets and must stay generic
+- AGENTS.md: Rule Layers gains entry-point and installer-file rules; directory tree and Read First list both new entry points
+- INSTALL.md: "Before You Start" gains a "Reached this file from a URL instead of a clone" subsection with the raw-base rule and the fetch-lazily rule
+- UPGRADE.md: notes the raw-base rule for URL-reached runs
+
 ## [2.0.0] - 2026-11-17
 
 Renamed from `install-obsidian` to `repo-brain`. Repos installed with 1.x: follow UPGRADE.md.

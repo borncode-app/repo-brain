@@ -37,30 +37,84 @@ This project uses a **hybrid** approach:
 
 The inspired layer is an enhancement, not a replacement for the installer core.
 
-## How to Use
+## Install
 
-### Option A: With a coding agent (Claude Code, Codex, Cursor, Copilot, ...)
+Three ways in. All of them run the same installer.
 
-```bash
-# 1. Clone this repository
-git clone https://github.com/borncode-app/repo-brain.git
+### 1. Paste this into any agent (default)
 
-# 2. Tell your agent:
-> Read repo-brain/INSTALL.md and follow the instructions
+```text
+Install repo-brain in this repo: read
+https://raw.githubusercontent.com/borncode-app/repo-brain/main/AGENT-INSTALL.md
+and follow it end to end. Ask me before you change anything.
 ```
 
-### Option B: With any other AI
+### 2. Install the skill, then just ask
 
-Open `INSTALL.md` and follow the phases. Feed each phase file to your AI agent sequentially.
-Before Phase 2, explicitly choose mode: `strict` (default) or `adaptive`.
+If your agent supports [skills](https://agentskills.io) and you have Node.js 22.20+, install the skill once. After
+that, "set up repo-brain in this repo" is enough — no URL to paste.
+
+```bash
+npx skills add borncode-app/repo-brain --skill repo-brain-install
+```
+
+Then, in any repo:
+
+```text
+Set up repo-brain in this repo.
+```
+
+The skill also works with `-g` for all projects, `-a claude-code` to skip the agent picker, and
+`npx skills update` to keep it current.
+
+The CLI also discovers the generic `updating-docs` skill that ships inside installs. Pass
+`--skill repo-brain-install` to install only the installer; `updating-docs` is meant to arrive with an install.
+
+### 3. Clone, when your agent has no network
+
+```bash
+git clone --depth 1 https://github.com/borncode-app/repo-brain.git /tmp/repo-brain
+```
+
+```text
+Read /tmp/repo-brain/INSTALL.md and follow it end to end.
+```
+
+Whichever you pick, the agent analyzes your codebase, proposes a doc tree, and builds it after you approve. It
+confirms two things as it goes: which repo it is installing into, and whether you want `strict` (default, full
+structure) or `adaptive` (only the categories your repo justifies).
+
+There is no package, no build step, and nothing added to your `package.json`. The outputs are listed under
+[What You Get](#what-you-get).
+
+### Which should I pick?
+
+| Situation | Use |
+|-----------|-----|
+| Any agent, one time | 1 — the paste-in prompt |
+| You will use repo-brain on several repos | 2 — install the skill once |
+| Network is blocked, or you want the files locally | 3 — clone |
+
+[AGENT-INSTALL.md](AGENT-INSTALL.md) lists which agents fetch cleanly and which need 3.
 
 ### Upgrading a repo installed with install-obsidian (v1)
 
-If `CLAUDE.md` is your hub and your docs use `[[wiki-links]]`, tell your agent:
+If your `CLAUDE.md` is the hub and your docs use `[[wiki-links]]`, run this instead:
 
-```bash
-> Read repo-brain/UPGRADE.md and follow the instructions
+```text
+Upgrade this repo to repo-brain v2: read
+https://raw.githubusercontent.com/borncode-app/repo-brain/main/UPGRADE.md
+and follow it end to end.
 ```
+
+The skill handles this too: if you installed it, say "upgrade this repo to repo-brain v2".
+
+### Reading it yourself
+
+The repo page is the whole installer: [INSTALL.md](INSTALL.md) is the flow,
+[PHASES/01-analyze.md](PHASES/01-analyze.md) through [PHASES/05-cleanup.md](PHASES/05-cleanup.md) are the steps,
+[TEMPLATES/hub-agents-md.md](TEMPLATES/hub-agents-md.md) and its neighbors are the structures. Each phase
+documents its own output and its own gate.
 
 ## What You Get
 
@@ -123,6 +177,8 @@ In both modes, files must contain real content. No empty placeholders.
 
 | File | Purpose |
 |------|---------|
+| [AGENT-INSTALL.md](AGENT-INSTALL.md) | Remote install entry point: how an agent reaches the installer from a URL |
+| [skills/repo-brain-install/SKILL.md](skills/repo-brain-install/SKILL.md) | The same install as an installable agent skill (`npx skills add`) |
 | [INSTALL.md](INSTALL.md) | Step-by-step instructions for AI agents |
 | [UPGRADE.md](UPGRADE.md) | Upgrade flow for repos installed with v1 (`install-obsidian`) |
 | [PRINCIPLES.md](PRINCIPLES.md) | Design principles and decision framework |
@@ -152,6 +208,7 @@ Optional — browse the docs as a graph in Obsidian:
 ## Requirements
 
 - An AI agent capable of reading files and exploring a codebase
+- Either network access for that agent (so it can fetch the instructions) or `git` (for the shallow-clone fallback)
 - The target repo must have identifiable structure (any language, any framework)
 - Obsidian (optional, for graph view)
 

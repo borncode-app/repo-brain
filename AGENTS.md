@@ -36,6 +36,8 @@ Think before coding, simplicity first, surgical changes, goal-driven execution. 
 ## Read First
 
 - [README.md](README.md) — project overview
+- [AGENT-INSTALL.md](AGENT-INSTALL.md) — remote install entry point (how an agent reaches the installer from a URL)
+- [skills/repo-brain-install/SKILL.md](skills/repo-brain-install/SKILL.md) — the same install as an installable skill
 - [INSTALL.md](INSTALL.md) — execution flow for AI agents (fresh install)
 - [UPGRADE.md](UPGRADE.md) — execution flow for repos installed with v1 (`install-obsidian`)
 - [PRINCIPLES.md](PRINCIPLES.md) — design rules
@@ -54,7 +56,11 @@ repo-brain/
 │       └── updating-docs/
 │           └── SKILL.md
 ├── PHASES/
+├── skills/
+│   └── repo-brain-install/
+│       └── SKILL.md
 ├── TEMPLATES/
+├── AGENT-INSTALL.md
 ├── AGENTS.md
 ├── CHANGELOG.md
 ├── CLAUDE.md
@@ -76,6 +82,8 @@ repo-brain/
 3. **Task-specific instructions**: follow user instructions in current session.
 4. **Hybrid strategy**: preserve installer core requirements; apply llm-wiki-inspired practices as a complementary layer.
 5. **Shipped files**: the installer copies `.claude/rules/coding-behavior-rules.md` and `.claude/skills/updating-docs/SKILL.md` verbatim to every target repo (see [PHASES/03-implement.md](PHASES/03-implement.md) steps 3.5 and 3.6), so both must stay generic.
+6. **Entry-point files**: `AGENT-INSTALL.md` and `skills/repo-brain-install/SKILL.md` are the installer's own front doors. They may name `repo-brain` and its URLs; nothing under `.claude/` may, and they are never copied into a target repo.
+7. **Installer files**: `INSTALL.md`, `UPGRADE.md`, `PHASES/`, and `TEMPLATES/` stay the single source of truth for the flow. The entry-point files route to them and must not restate the steps.
 
 ---
 
@@ -104,6 +112,7 @@ At the end of every session, run a final pass:
 
 ## Related
 
+- [AGENT-INSTALL.md](AGENT-INSTALL.md)
 - [INSTALL.md](INSTALL.md)
 - [UPGRADE.md](UPGRADE.md)
 - [PRINCIPLES.md](PRINCIPLES.md)

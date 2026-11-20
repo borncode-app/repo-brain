@@ -86,6 +86,17 @@ This is a **core output** in both `strict` and `adaptive` modes.
 
 The skill lives under `.claude/skills/` because that is where Claude Code discovers project skills; the link in `AGENTS.md` lets every other agent follow the same file as a plain procedure.
 
+#### Two Kinds of Skill in This Repo
+
+| Kind | Location | Copied to targets? | May name `repo-brain`? |
+|------|----------|--------------------|------------------------|
+| **Shipped skill** | `.claude/skills/<name>/SKILL.md` | Yes, verbatim | No — must stay generic |
+| **Entry-point skill** | `skills/<name>/SKILL.md` | No, never | Yes — it is the installer's own front door |
+
+`skills/repo-brain-install/SKILL.md` is the only entry-point skill. It routes an agent to
+[AGENT-INSTALL.md](../AGENT-INSTALL.md) and the phase files instead of restating them, so the flow keeps one
+source of truth. Install it from outside with `npx skills add borncode-app/repo-brain --skill repo-brain-install`.
+
 #### Adding More Skills to the Installer
 
 To ship an additional skill (e.g. `validating-docs`, `migrating-agents-md`):

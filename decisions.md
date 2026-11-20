@@ -2,6 +2,18 @@
 
 > Persistent design decisions for this repository.
 
+## 2026-11-20 — The installer also ships as an agent skill
+
+- **Decision**: add `skills/repo-brain-install/SKILL.md` as a second front door, installed with `npx skills add borncode-app/repo-brain --skill repo-brain-install`. It routes to `AGENT-INSTALL.md` and the phase files; it does not restate the flow. The paste-in prompt from `AGENT-INSTALL.md` stays the default and stays authoritative when the two disagree.
+- **Why**: a README URL only reaches people who read the README. `npx skills add` puts repo-brain in the skills.sh index, which is a discovery channel the clone-and-paste instructions never had, and it works across the ~78 agents that CLI supports. Keeping the skill a router instead of a copy means the flow is still maintained in exactly one place, so the two entry points cannot drift apart.
+- **Impact**: this creates a second skill location with opposite rules. `skills/` holds entry-point skills — repo-specific, never copied into a target repo, allowed to name `repo-brain`. `.claude/skills/` holds shipped skills — generic, copied verbatim, forbidden from naming `repo-brain`. `AGENTS.md` Rule Layers 6–7 and [PHASES/03-implement.md](PHASES/03-implement.md) now state both, and the note lives in the skill itself so a future contributor reading only that file gets it right. Note the discovery side effect: `npx skills add borncode-app/repo-brain` lists both skills, so the README says to pass `--skill repo-brain-install`. Verified with `npx skills add . --list` (finds 2) and a scoped install into a temp project (copies 1, byte-identical, writes the lock).
+
+## 2026-11-20 — One paste-in prompt replaces the clone instructions
+
+- **Decision**: the README's "How to Use" section is replaced by a single prompt the human pastes into their agent: read `https://raw.githubusercontent.com/borncode-app/repo-brain/main/AGENT-INSTALL.md` and follow it. That file points at `INSTALL.md`, which stays the source of truth for the flow. Cloning is demoted to a fallback for agents that cannot fetch.
+- **Why**: the old section had two paths (clone, or feed phase files by hand) and both assumed the human would assemble the install. A URL is now reachable by every major agent, so the agent can open the instructions itself — one line replaces a shell block and a manual sequence. `raw.githubusercontent.com` serves `text/plain`, which matters because some agents hand a fetched page to a summarizer: instruction files have to arrive verbatim, and a raw text file at least survives the trip intact when the agent uses `curl` + `Read` (Claude Code's `WebFetch` summarizes regardless, hence the explicit `curl` guidance).
+- **Impact**: `AGENT-INSTALL.md` is new and carries what a remote run needs that a clone does not: the raw-base rule for relative links, lazy fetching, the per-agent fetch table, and the shallow-clone fallback. `INSTALL.md` gains the same raw-base rule under "Before You Start" so an agent that lands there directly still resolves links correctly. `UPGRADE.md` gets a one-line pointer. The clone path survives in both README and AGENT-INSTALL.md.
+
 ## 2026-11-17 — Rewrite history so the Contributors graph shows one account
 
 - **Decision**: rewrite every commit with `git filter-repo` so that author and committer are BornCode `<born113za@gmail.com>` — the address GitHub already resolves to the `borncode-app` account — and so that no commit message carries a `Co-authored-by` trailer. The 21 merged `copilot/*` branches were deleted, and `main` plus the annotated tag `v2.0.0` were force-pushed to the rewritten history.

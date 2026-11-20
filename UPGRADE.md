@@ -3,6 +3,10 @@
 > For repos that already ran the v1 installer (`install-obsidian`).
 > For any other repo, use [INSTALL.md](INSTALL.md).
 
+> **Reached from a URL?** Resolve every relative link here against
+> `https://raw.githubusercontent.com/borncode-app/repo-brain/main/<path>`, and fetch each file when a step needs it.
+> See [AGENT-INSTALL.md](AGENT-INSTALL.md).
+
 ---
 
 ## When This Applies
