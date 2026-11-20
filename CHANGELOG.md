@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+- **BREAKING (contributor-facing):** `updating-docs` moved from `.claude/skills/updating-docs/` to `shipped/updating-docs/`. `npx skills add` walks `.claude/skills/`, so the skill was being offered to strangers as a standalone install even though it only makes sense inside an installed repo. It still installs to the target's `.claude/skills/updating-docs/` — only the source path in this repo changed. `PHASES/03-implement.md` step 3.6 now names both paths explicitly.
+- AGENTS.md now carries the sections its own template requires: Identity, Task Routing, Working Rules, Doc Workflow, Documentation Map, Key Warnings
+
 ### Added
 - `skills/repo-brain-install/SKILL.md` — the install as an agent skill. `npx skills add borncode-app/repo-brain --skill repo-brain-install` and "set up repo-brain in this repo" is enough; it routes to `AGENT-INSTALL.md` and the phases instead of restating them, and lists the fetch traps (summarizing fetch tools, no-network sandboxes) plus the gates a run must not skip
 - AGENT-INSTALL.md — remote install entry point: an agent pointed at the GitHub URL resolves every relative installer link against `https://raw.githubusercontent.com/borncode-app/repo-brain/main/<path>`, fetches phases lazily, and copies the two shipped files from their raw URLs. Also records which agents fetch cleanly (Claude Code needs `curl` + `Read`, Codex CLI defaults to no network) and when to fall back to a shallow clone

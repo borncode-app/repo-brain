@@ -68,9 +68,6 @@ Set up repo-brain in this repo.
 The skill also works with `-g` for all projects, `-a claude-code` to skip the agent picker, and
 `npx skills update` to keep it current.
 
-The CLI also discovers the generic `updating-docs` skill that ships inside installs. Pass
-`--skill repo-brain-install` to install only the installer; `updating-docs` is meant to arrive with an install.
-
 ### Method 3 — Clone, when your agent has no network
 
 ```bash
@@ -189,7 +186,7 @@ In both modes, files must contain real content. No empty placeholders.
 | `CLAUDE.md` | One-line import of `AGENTS.md` for Claude Code |
 | `decisions.md` | Persistent design decision log |
 | `.claude/rules/` | Coding-behavior rules shipped to target repos |
-| `.claude/skills/updating-docs/` | Generic doc-update skill shipped to target repos |
+| `shipped/` | Skills shipped to target repos (`updating-docs`) |
 | `TEMPLATES/` | Document structure templates, including migration mapping |
 | `PHASES/` | Sequential execution phases (Analyze → Design → Implement → Optimize Links → Cleanup) |
 

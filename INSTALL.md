@@ -27,7 +27,7 @@ Check which flow applies:
 Someone pasted a prompt that sent you to the GitHub repo, so there is no local `repo-brain/` folder. Two rules then:
 
 - **Resolve every relative link in this file and the phases against the raw base**: `https://raw.githubusercontent.com/borncode-app/repo-brain/main/<path>`. `PHASES/01-analyze.md` becomes `https://raw.githubusercontent.com/borncode-app/repo-brain/main/PHASES/01-analyze.md`.
-- **Fetch lazily** — read a phase file when you reach it, and read the two shipped files (`.claude/rules/coding-behavior-rules.md`, `.claude/skills/updating-docs/SKILL.md`) at their raw URLs when steps 3.5 and 3.6 need them. Do not hold the whole installer in context.
+- **Fetch lazily** — read a phase file when you reach it, and read the two shipped files (`.claude/rules/coding-behavior-rules.md`, `shipped/updating-docs/SKILL.md`) at their raw URLs when steps 3.5 and 3.6 need them. Do not hold the whole installer in context.
 
 If fetching fails because the sandbox has no network, stop and ask the human for a shallow clone rather than reconstructing the flow from memory. [AGENT-INSTALL.md](AGENT-INSTALL.md) covers the per-agent detail.
 
@@ -245,7 +245,7 @@ If the repo is a single-file project or lacks identifiable directories:
 - [PRINCIPLES.md](PRINCIPLES.md) — Design philosophy that governs all decisions
 - [CONTRIBUTING.md](CONTRIBUTING.md) — How to contribute changes
 - [CHANGELOG.md](CHANGELOG.md) — Version history
-- [.claude/skills/updating-docs/SKILL.md](.claude/skills/updating-docs/SKILL.md) — Generic doc-update skill shipped with this installer
+- [shipped/updating-docs/SKILL.md](shipped/updating-docs/SKILL.md) — Generic doc-update skill shipped with this installer (installed into the target as `.claude/skills/updating-docs/SKILL.md`)
 
 ---
 

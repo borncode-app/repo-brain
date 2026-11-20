@@ -2,6 +2,12 @@
 
 > Persistent design decisions for this repository.
 
+## 2026-11-20 — `updating-docs` moves out of `.claude/` into `shipped/`
+
+- **Decision**: `updating-docs` lives at `shipped/updating-docs/SKILL.md` in this repo and still installs to the target's `.claude/skills/updating-docs/SKILL.md`. Only the source path changed.
+- **Why**: `npx skills add` walks `.claude/skills/` as a discovery location, so the skill was offered as a standalone install from `borncode-app/repo-brain` — a stranger running `npx skills add borncode-app/repo-brain` got a skill whose instructions all point at `docs/_index.md`, `docs/features/`, `docs/architecture/`. This repo has no `docs/` tree, so those instructions were dead on arrival; the skill only makes sense after an install has created one. `.claude/` in this repo now holds exactly one file, the rules file that is also copied to targets, so discovery sees only `repo-brain-install`.
+- **Impact**: `PHASES/03-implement.md` step 3.6 now states the source (`shipped/`) and the destination (`.claude/skills/`) as separate paths, because conflating them is what let the bug in. `AGENTS.md` Rule Layers 5–6 and Key Warnings record the trap. The CHANGELOG marks this breaking for contributors. Verified with `npx skills add . --list`: exactly one skill, `repo-brain-install`.
+
 ## 2026-11-20 — The installer also ships as an agent skill
 
 - **Decision**: add `skills/repo-brain-install/SKILL.md` as a second front door, installed with `npx skills add borncode-app/repo-brain --skill repo-brain-install`. It routes to `AGENT-INSTALL.md` and the phase files; it does not restate the flow. The paste-in prompt from `AGENT-INSTALL.md` stays the default and stays authoritative when the two disagree.

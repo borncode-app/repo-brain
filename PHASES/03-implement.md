@@ -73,25 +73,27 @@ Rules:
 The `updating-docs` skill ships with this installer. Copy it to the target repo so future agents can maintain docs without re-learning the discipline:
 
 ```bash
-# Read the skill from THIS installer repo and write to target
 mkdir -p .claude/skills/updating-docs
 ```
 
-1. Read the skill file from this installer repo at `.claude/skills/updating-docs/SKILL.md`
-2. Write it to `<target>/.claude/skills/updating-docs/SKILL.md` (verbatim, no edits — the skill is generic by design)
-3. Add a single line in the `AGENTS.md` "Read First" section that links `.claude/skills/updating-docs/SKILL.md` — Doc-update procedure (read-first, write-second discipline)
+1. Read the skill file from **this installer repo** at `shipped/updating-docs/SKILL.md`
+2. Write it to **the target repo's** `.claude/skills/updating-docs/SKILL.md` (verbatim, no edits — the skill is generic by design)
+3. Add a single line in the target's `AGENTS.md` "Read First" section linking `.claude/skills/updating-docs/SKILL.md` — Doc-update procedure (read-first, write-second discipline)
 4. If the target already has a `.claude/skills/` folder, merge carefully — preserve any existing skills, append the new one
 
 This is a **core output** in both `strict` and `adaptive` modes.
 
-The skill lives under `.claude/skills/` because that is where Claude Code discovers project skills; the link in `AGENTS.md` lets every other agent follow the same file as a plain procedure.
+Source and destination differ, and the difference matters: it ships from `shipped/` in this repo and lands in `.claude/skills/` in the target. Only the target path is `.claude/skills/`, because that is where Claude Code discovers project skills; the link in the target's `AGENTS.md` lets every other agent follow the same file as a plain procedure. This repo keeps it outside `.claude/` so `npx skills add` does not offer it as an install for other repos.
 
 #### Two Kinds of Skill in This Repo
 
 | Kind | Location | Copied to targets? | May name `repo-brain`? |
 |------|----------|--------------------|------------------------|
-| **Shipped skill** | `.claude/skills/<name>/SKILL.md` | Yes, verbatim | No — must stay generic |
+| **Shipped skill** | `shipped/<name>/SKILL.md` | Yes, verbatim → target's `.claude/skills/<name>/` | No — must stay generic |
 | **Entry-point skill** | `skills/<name>/SKILL.md` | No, never | Yes — it is the installer's own front door |
+
+`shipped/` and `skills/` are both outside `.claude/`, so `npx skills add` sees only `repo-brain-install`. A shipped
+skill becomes a discoverable project skill only after it lands in the target's `.claude/skills/`.
 
 `skills/repo-brain-install/SKILL.md` is the only entry-point skill. It routes an agent to
 [AGENT-INSTALL.md](../AGENT-INSTALL.md) and the phase files instead of restating them, so the flow keeps one
@@ -101,7 +103,7 @@ source of truth. Install it from outside with `npx skills add borncode-app/repo-
 
 To ship an additional skill (e.g. `validating-docs`, `migrating-agents-md`):
 
-1. Add the skill to this installer repo under `.claude/skills/<skill-name>/SKILL.md`
+1. Add the skill to this installer repo under `shipped/<skill-name>/SKILL.md`
    - Skill name uses kebab-case letters/numbers/hyphens only
    - Frontmatter: `name` + `description` (max 1024 chars; description starts with "Use when..." and lists triggers, not workflow)
 2. Add a parallel step in this file (e.g. `3.7 Install <Skill-Name> Skill`) with the same copy-pattern as 3.6
@@ -222,4 +224,4 @@ Wait for the human's final review.
 - [TEMPLATES/hub-agents-md.md](../TEMPLATES/hub-agents-md.md) — AGENTS.md hub template
 - [TEMPLATES/index-doc.md](../TEMPLATES/index-doc.md) — Index doc template
 - [TEMPLATES/migration-map.md](../TEMPLATES/migration-map.md) — Migration mapping template
-- [.claude/skills/updating-docs/SKILL.md](../.claude/skills/updating-docs/SKILL.md) — Generic doc-update skill shipped with this installer
+- [shipped/updating-docs/SKILL.md](../shipped/updating-docs/SKILL.md) — Generic doc-update skill shipped with this installer

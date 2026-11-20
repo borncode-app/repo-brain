@@ -65,7 +65,7 @@ https://raw.githubusercontent.com/borncode-app/repo-brain/main/<path>
 Two consequences:
 
 - **Fetch lazily.** Read `INSTALL.md` first, then each phase file when you reach it. Do not load the whole installer into context at once.
-- **Copy shipped files from the URL.** `.claude/rules/coding-behavior-rules.md` and `.claude/skills/updating-docs/SKILL.md` are copied verbatim; read each one at the raw URL and write it into the target.
+- **Copy shipped files from the URL.** The two files the install copies come from this repo at `.claude/rules/coding-behavior-rules.md` and `shipped/updating-docs/SKILL.md`. Read each at its raw URL and write it into the target — the rules file to `.claude/rules/`, the skill to `.claude/skills/updating-docs/`.
 
 ## 5. Run the install
 
