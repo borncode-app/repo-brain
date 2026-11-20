@@ -39,9 +39,10 @@ The inspired layer is an enhancement, not a replacement for the installer core.
 
 ## Install
 
-Three ways in. All of them run the same installer.
+Pick **one** of the three methods below. They are alternatives, not steps — each one installs the same thing, so
+you never run more than one.
 
-### 1. Paste this into any agent (default)
+### Method 1 — Paste this into any agent (recommended)
 
 ```text
 Install repo-brain in this repo: read
@@ -49,7 +50,7 @@ https://raw.githubusercontent.com/borncode-app/repo-brain/main/AGENT-INSTALL.md
 and follow it end to end. Ask me before you change anything.
 ```
 
-### 2. Install the skill, then just ask
+### Method 2 — Install the skill, then just ask
 
 If your agent supports [skills](https://agentskills.io) and you have Node.js 22.20+, install the skill once. After
 that, "set up repo-brain in this repo" is enough — no URL to paste.
@@ -70,7 +71,7 @@ The skill also works with `-g` for all projects, `-a claude-code` to skip the ag
 The CLI also discovers the generic `updating-docs` skill that ships inside installs. Pass
 `--skill repo-brain-install` to install only the installer; `updating-docs` is meant to arrive with an install.
 
-### 3. Clone, when your agent has no network
+### Method 3 — Clone, when your agent has no network
 
 ```bash
 git clone --depth 1 https://github.com/borncode-app/repo-brain.git /tmp/repo-brain
@@ -87,15 +88,15 @@ structure) or `adaptive` (only the categories your repo justifies).
 There is no package, no build step, and nothing added to your `package.json`. The outputs are listed under
 [What You Get](#what-you-get).
 
-### Which should I pick?
+### Which method should I pick?
 
 | Situation | Use |
 |-----------|-----|
-| Any agent, one time | 1 — the paste-in prompt |
-| You will use repo-brain on several repos | 2 — install the skill once |
-| Network is blocked, or you want the files locally | 3 — clone |
+| Any agent, one time | Method 1 — the paste-in prompt |
+| You will use repo-brain on several repos | Method 2 — install the skill once |
+| Network is blocked, or you want the files locally | Method 3 — clone |
 
-[AGENT-INSTALL.md](AGENT-INSTALL.md) lists which agents fetch cleanly and which need 3.
+[AGENT-INSTALL.md](AGENT-INSTALL.md) lists which agents fetch cleanly and which need Method 3.
 
 ### Upgrading a repo installed with install-obsidian (v1)
 
